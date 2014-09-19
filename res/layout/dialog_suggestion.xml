@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#333366" >
+
+    <EditText
+        android:id="@+id/et_suggestion_mail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:inputType="textEmailAddress"
+        android:hint="답변 받을 메일주소(선택)" />
+
+    <EditText
+        android:id="@+id/et_suggestion_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_suggestion_mail"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:hint="제목" />
+
+    <LinearLayout
+        android:id="@+id/lay_suggestion_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:weightSum="3" >
+
+        <Button
+            android:id="@+id/btn_suggestion_cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="취소" />
+
+        <Button
+            android:id="@+id/btn_suggestion_send"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="보내기" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/et_suggestion_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/lay_suggestion_buttons"
+        android:layout_below="@id/et_suggestion_title"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:gravity="top|left"
+        android:hint="내용\n\nceo@chamchicompany.com 으로 직접 보내주셔도 됩니다." />
+
+</RelativeLayout>
