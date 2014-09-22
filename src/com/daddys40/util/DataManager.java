@@ -7,6 +7,7 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.params.CoreProtocolPNames;
 import org.json.simple.parser.JSONParser;
 
 import android.app.ProgressDialog;
@@ -52,6 +53,7 @@ public class DataManager {
 				public void run() {
 					showHandler.sendEmptyMessage(0);
 					HttpClient httpClient = new DefaultHttpClient();
+//					httpClient.getParams().setParameter(CoreProtocolPNames.USER_AGENT, value)
 					try {
 						HttpGet httpGet = new HttpGet("http://daddys40.woobi.co.kr/getAllData2.php");
 						HttpResponse httpResponse;

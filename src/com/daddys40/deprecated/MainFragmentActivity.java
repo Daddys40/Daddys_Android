@@ -1,4 +1,4 @@
-package com.daddys40;
+package com.daddys40.deprecated;
 
 
 import android.content.Context;
@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 
+import com.daddys40.R;
+import com.daddys40.R.id;
+import com.daddys40.R.layout;
 import com.daddys40.util.MyTagManager;
 import com.google.analytics.tracking.android.EasyTracker;
 /**

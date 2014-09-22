@@ -13,10 +13,10 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.daddys40.MainFragmentActivity;
 import com.daddys40.R;
 import com.daddys40.data.QnAData;
 import com.daddys40.data.QnADataContainer;
+import com.daddys40.deprecated.MainFragmentActivity;
 import com.daddys40.util.LogUtil;
 import com.daddys40.util.MySystem;
 import com.daddys40.util.MyTagManager;

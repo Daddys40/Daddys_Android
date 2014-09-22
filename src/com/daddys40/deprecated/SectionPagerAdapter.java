@@ -1,5 +1,7 @@
-package com.daddys40;
+package com.daddys40.deprecated;
 
+import com.daddys40.R;
+import com.daddys40.R.string;
 import com.daddys40.appintro.AppIntroFragment;
 
 import android.content.Context;

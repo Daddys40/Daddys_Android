@@ -2,28 +2,118 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/invite_background"
     android:orientation="vertical" >
 
-    <EditText
-        android:id="@+id/et_inviting_mynum"
+    <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/invite_topicon" />
 
-    <EditText
-        android:id="@+id/et_inviting_yournum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="85dp"
+        android:gravity="center_horizontal" >
+
+        <LinearLayout
+            android:id="@+id/invited_lay1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/et_inviting_mynum"
+                android:layout_width="220dp"
+                android:layout_height="33dp"
+                android:background="@drawable/blank"
+                android:hint="본인 전화번호"
+                android:inputType="number"
+                android:maxEms="12"
+                android:textColor="#ffffff"
+                android:textColorHint="#ffffff" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/invite_phone_icon" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="235dp"
+            android:layout_height="3dp"
+            android:layout_below="@id/invited_lay1"
+            android:layout_centerHorizontal="true"
+            android:background="#ffffff" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="25dp"
+        android:gravity="center_horizontal" >
+
+        <LinearLayout
+            android:id="@+id/invited_lay1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/et_inviting_yournum"
+                android:layout_width="220dp"
+                android:layout_height="33dp"
+                android:background="@drawable/blank"
+                android:hint="배우자 분 전화번호"
+                android:inputType="number"
+                android:maxEms="12"
+                android:textColor="#ffffff"
+                android:textColorHint="#ffffff" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/invite_phone_icon2" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="235dp"
+            android:layout_height="3dp"
+            android:layout_below="@id/invited_lay1"
+            android:layout_centerHorizontal="true"
+            android:background="#ffffff" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/inviting_explain"
+        android:textColor="#ffffff"
+        android:textScaleX="0.9" />
 
     <Button
         android:id="@+id/btn_inviting_send"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="send" />
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/sel_btn_invite_send" />
 
     <Button
         android:id="@+id/btn_inviting_skip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="skip" />
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/sel_btn_invite_not_send" />
 
 </LinearLayout>

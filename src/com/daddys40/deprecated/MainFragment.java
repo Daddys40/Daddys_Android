@@ -1,4 +1,4 @@
-package com.daddys40;
+package com.daddys40.deprecated;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -20,6 +20,10 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.daddys40.R;
+import com.daddys40.R.drawable;
+import com.daddys40.R.id;
+import com.daddys40.R.layout;
+import com.daddys40.R.string;
 import com.daddys40.alarm.EnrollAlarm;
 import com.daddys40.alarm.FatherAlarmManger;
 import com.daddys40.data.QnAData;

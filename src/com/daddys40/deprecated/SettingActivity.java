@@ -1,4 +1,4 @@
-package com.daddys40;
+package com.daddys40.deprecated;
 
 import java.util.Calendar;
 
@@ -16,6 +16,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.daddys40.R;
+import com.daddys40.R.id;
+import com.daddys40.R.layout;
 import com.daddys40.alarm.EnrollAlarm;
 import com.daddys40.util.DialogMaker;
 import com.daddys40.util.UserData;

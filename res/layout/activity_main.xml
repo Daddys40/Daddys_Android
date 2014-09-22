@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/splash_bg"
     android:orientation="vertical"
-    tools:context="com.daddys40.MainActivity" >
+    tools:context="com.daddys40.deprecated.MainActivity" >
 
     <RelativeLayout
         android:id="@+id/lay_main_top_for_setting"

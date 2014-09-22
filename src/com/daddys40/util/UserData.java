@@ -30,6 +30,9 @@ public class UserData {
 	
 	private static UserData userData;
 	
+//	추가된 부분
+	final private String TOKEN = "token";
+	
 	private UserData() {
 		
 	}
@@ -159,5 +162,13 @@ public class UserData {
 	}
 	public int getWeight(){
 		return mSharedPreferences.getInt("weight", 0);
+	}
+//	추가된부분
+	public void setToken(String token){
+		mEditor.putString(TOKEN, token);
+		mEditor.commit();
+	}
+	public String getToken(){
+		return mSharedPreferences.getString(TOKEN, null);
 	}
 }

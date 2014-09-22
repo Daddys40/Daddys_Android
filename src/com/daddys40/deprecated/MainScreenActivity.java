@@ -1,4 +1,8 @@
-package com.daddys40;
+package com.daddys40.deprecated;
+
+import com.daddys40.R;
+import com.daddys40.R.id;
+import com.daddys40.R.layout;
 
 import android.app.Activity;
 import android.os.Bundle;

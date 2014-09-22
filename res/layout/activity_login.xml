@@ -2,31 +2,100 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/login_background"
     android:orientation="vertical" >
 
-    <EditText
-        android:id="@+id/et_login_email"
+    <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="80dp"
+        android:text="Sign in"
+        android:textColor="#ffffff"
+        android:textSize="35sp" />
 
-    <EditText
-        android:id="@+id/et_login_pwd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <Button 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="55dp"
+        android:gravity="center_horizontal" >
+
+        <LinearLayout
+            android:id="@+id/invited_lay1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/et_login_email"
+                android:layout_width="210dp"
+                android:layout_height="33dp"
+                android:background="@drawable/blank"
+                android:hint="E-mail"
+                android:inputType="textEmailAddress"
+                android:textColor="#ffffff"
+                android:textColorHint="#ffffff" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/email_icon" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="245dp"
+            android:layout_height="3dp"
+            android:layout_below="@id/invited_lay1"
+            android:layout_centerHorizontal="true"
+            android:background="#ffffff" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="25dp"
+        android:gravity="center_horizontal" >
+
+        <LinearLayout
+            android:id="@+id/invited_lay1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/et_login_pwd"
+                android:layout_width="215dp"
+                android:layout_height="33dp"
+                android:background="@drawable/blank"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:textColor="#ffffff"
+                android:textColorHint="#ffffff" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/pwd_icon" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="245dp"
+            android:layout_height="3dp"
+            android:layout_below="@id/invited_lay1"
+            android:layout_centerHorizontal="true"
+            android:background="#ffffff" />
+    </RelativeLayout>
+
+    <Button
         android:id="@+id/btn_login_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="login"/>
-    <Button 
-        android:id="@+id/btn_login_find"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="find id pwd"/>
-    <Button 
-        android:id="@+id/btn_login_registration"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="resgistration"/>
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="150dp"
+        android:background="@drawable/sel_btn_long_login" />
 
 </LinearLayout>
