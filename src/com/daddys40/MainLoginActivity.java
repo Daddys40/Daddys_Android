@@ -3,7 +3,10 @@ package com.daddys40;
 import org.json.simple.JSONObject;
 
 import com.daddys40.network.NetworkRequestDoneListener;
+import com.daddys40.network.RequestThread;
 import com.daddys40.network.SignInRequest;
+import com.daddys40.util.LogUtil;
+import com.daddys40.util.ToastManager;
 import com.daddys40.util.UserData;
 
 import android.app.Activity;
@@ -27,18 +30,22 @@ public class MainLoginActivity extends Activity {
 		checkToken();
 	}
 	private void checkToken(){
+		ToastManager.getInstance();
 		if(UserData.getInstance().getToken() != null){
-			SignInRequest rq = new SignInRequest(UserData.getInstance().getToken());
+			RequestThread rq = new SignInRequest(UserData.getInstance().getToken());
 			rq.setOnNetworkRequestDoneListener(new NetworkRequestDoneListener() {
 				@Override
 				public void onFinish(String result, JSONObject jsonObject) {
 					//받아온 유저 데이터 저장
+					LogUtil.e("Auto Login Result", result);
+					ToastManager.getInstance().showToast(MainLoginActivity.this, "자동 로그인 성공", 2000);
 				}
 				@Override
 				public void onExceptionError(Exception e) {
 					
 				}
 			});
+			rq.start();
 		}
 	}
 	private void initView(){

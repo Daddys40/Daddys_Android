@@ -23,26 +23,43 @@
         <service android:name="com.daddys40.sleep.SleepService" >
         </service>
 
-        <activity android:name="com.daddys40.deprecated.MainFragmentActivity" >
+        <activity
+            android:name="com.daddys40.deprecated.MainFragmentActivity"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.daddys40.LogoLodingActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.daddys40.MainLoginActivity" >
+        <activity
+            android:name="com.daddys40.MainLoginActivity"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity android:name="com.daddys40.InvitedActivity" >
+        <activity
+            android:name="com.daddys40.InvitedActivity"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity android:name="com.daddys40.InvitingActivity" >
+        <activity
+            android:name="com.daddys40.InvitingActivity"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity android:name="com.daddys40.LoginActivity" >
+        <activity
+            android:name="com.daddys40.LoginActivity"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity android:name="com.daddys40.SignupActivity" >
+        <activity
+            android:name="com.daddys40.SignupActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.daddys40.FeedActivity"
+            android:screenOrientation="portrait" >
         </activity>
 
         <!-- <activity android:name="com.daddys40.ResultActivity" > -->

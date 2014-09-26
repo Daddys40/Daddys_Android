@@ -18,6 +18,8 @@ import org.apache.http.protocol.HTTP;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import android.os.Build;
+
 import com.daddys40.util.DefineConst;
 
 public class RequestThread extends Thread{
@@ -29,7 +31,8 @@ public class RequestThread extends Thread{
 	}
 	protected void httpGetMethod(String uri){
 		HttpClient httpClient = new DefaultHttpClient();
-		httpClient.getParams().setParameter(CoreProtocolPNames.USER_AGENT, DefineConst.NETWORK_HTTP_USER_AGENT);
+		httpClient.getParams().setParameter(CoreProtocolPNames.USER_AGENT, DefineConst.NETWORK_HTTP_USER_AGENT + "1.0.0 ("
+				+ Build.MODEL +"; " + Build.VERSION.RELEASE + ")");
 		try {
 			HttpGet httpGet = new HttpGet(uri);
 			HttpResponse httpResponse;
