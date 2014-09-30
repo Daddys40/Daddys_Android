@@ -1,5 +1,12 @@
 package com.daddys40;
 
+import org.json.simple.JSONObject;
+
+import com.daddys40.network.NetworkRequestDoneListener;
+import com.daddys40.network.RequestThread;
+import com.daddys40.network.SignUpRequest;
+import com.daddys40.util.LogUtil;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -67,6 +74,26 @@ public class InvitedActivity extends Activity {
 					mCheckPrivacy.setBackgroundResource(R.drawable.box_icon_checked);
 				}
 
+			}
+		});
+		mBtnConnect.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				RequestThread rq = new SignUpRequest(mEtEmail.getText().toString(),mEtPwd.getText().toString(),mEtCode.getText().toString());
+				rq.setOnNetworkRequestDoneListener(new NetworkRequestDoneListener() {
+					
+					@Override
+					public void onFinish(String result, JSONObject jsonObject) {
+						LogUtil.e("Invited connect result", result);
+					}
+					
+					@Override
+					public void onExceptionError(Exception e) {
+						
+					}
+				});
+				rq.start();
 			}
 		});
 	}

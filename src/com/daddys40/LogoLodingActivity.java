@@ -23,6 +23,7 @@ import com.daddys40.util.LogUtil;
 import com.daddys40.util.ToastManager;
 
 public class LogoLodingActivity extends Activity {
+	private Dialog updateDlg = null;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -30,8 +31,8 @@ public class LogoLodingActivity extends Activity {
 		// Version Check
 		RequestThread request = new VersionCheckRequest();
 		ToastManager.getInstance();
-		DialogMaker dm = new DialogMaker(LogoLodingActivity.this, R.layout.dialog_update,0.5,0.5);
-		final Dialog dlg = dm.getDialog();
+		DialogMaker dm = new DialogMaker(LogoLodingActivity.this, R.layout.dialog_update,0.8,0.35);
+		updateDlg = dm.getDialog();
 		request.setOnNetworkRequestDoneListener(new NetworkRequestDoneListener() {
 			@Override
 			public void onFinish(String result, final JSONObject jsonObject) {
@@ -44,16 +45,16 @@ public class LogoLodingActivity extends Activity {
 				String force_update = jsonObject.get("needs_force_update")+ "";
 				String	 need_update = jsonObject.get("needs_update")+ "";
 				LogUtil.e("Version check result", force_update);
-				dlg.setCancelable(false);
-				((TextView) dlg.findViewById(R.id.tv_dlg_update_msg)).setText(jsonObject.get("update_message") + "");
-				((Button) dlg.findViewById(R.id.btn_dlg_update_cancel)).setOnClickListener(new OnClickListener() {
+				updateDlg.setCancelable(false);
+				((TextView) updateDlg.findViewById(R.id.tv_dlg_update_msg)).setText(jsonObject.get("update_message") + "");
+				((Button) updateDlg.findViewById(R.id.btn_dlg_update_cancel)).setOnClickListener(new OnClickListener() {
 					@Override
 					public void onClick(View v) {
-						dlg.dismiss();
+						updateDlg.dismiss();
 						startHandler.sendEmptyMessageDelayed(0, 1000);
 					}
 				});
-				((Button) dlg.findViewById(R.id.btn_dlg_update_ok)).setOnClickListener(new OnClickListener() {
+				((Button) updateDlg.findViewById(R.id.btn_dlg_update_ok)).setOnClickListener(new OnClickListener() {
 					
 					@Override
 					public void onClick(View v) {
@@ -67,12 +68,12 @@ public class LogoLodingActivity extends Activity {
 				
 				if("true".equals(force_update)){
 					//Dialog로 수정. Update Message 표시, 업데이트 선택권ㅏ
-					((Button) dlg.findViewById(R.id.btn_dlg_update_cancel)).setVisibility(View.INVISIBLE);
+					((Button) updateDlg.findViewById(R.id.btn_dlg_update_cancel)).setVisibility(View.INVISIBLE);
 					ToastManager.getInstance().showToast(LogoLodingActivity.this, "버전이 낮아 업데이트를 진행해야합니다.", 2000);
-					dlg.show();
+					dialogHandler.sendEmptyMessage(0);
 				}
 				else if("true".equals(need_update)){
-					dlg.show();
+					dialogHandler.sendEmptyMessage(0);
 				}
 				else{
 					startHandler.sendEmptyMessageDelayed(0, 1000);
@@ -88,7 +89,14 @@ public class LogoLodingActivity extends Activity {
 		});
 		request.start();
 	}
-
+	private Handler dialogHandler = new Handler(new Callback() {
+		
+		@Override
+		public boolean handleMessage(Message msg) {
+			updateDlg.show();
+			return false;
+		}
+	});
 	private Handler startHandler = new Handler(new Callback() {
 		@Override
 		public boolean handleMessage(Message msg) {

@@ -19,6 +19,10 @@ public class SignUpRequest extends RequestThread {
 	private int height;
 	private int weight;
 	private String dday;
+	
+	private final int TYPE_SIGN_UP = 0;
+	private final int TYPE_INVITED = 1;
+//	private int requestType = TYPE_SIGN_UP;
 
 	public SignUpRequest(String email, String pwd, String name, String gender, String baby_name, String age, String height, String weight, String dday) {
 //		this.email = email;
@@ -40,6 +44,16 @@ public class SignUpRequest extends RequestThread {
 		addParams("user[weight]", weight);
 		addParams("user[baby_due]", dday + " 00:00:00 " + TimeZone.getTimeZone(Calendar.getInstance().getTimeZone().getID()));
 		LogUtil.e("send Data", email +"/"+pwd +"/"+name+"/"+gender+"/"+baby_name+"/"+age+"/"+height+"/"+weight+"/"+dday);
+//		requestType = TYPE_SIGN_UP;
+	}
+
+	public SignUpRequest(String email, String pwd, String invitation_code) {
+		addParams("user[email]", email);
+		addParams("user[password]", pwd);
+		addParams("user[partner_invitation_code]", invitation_code);
+		LogUtil.e("send Data", email +"/"+pwd + "/" + invitation_code);
+
+//		requestType = TYPE_INVITED;
 	}
 
 	@Override

@@ -31,7 +31,7 @@ public class RequestThread extends Thread{
 	}
 	protected void httpGetMethod(String uri){
 		HttpClient httpClient = new DefaultHttpClient();
-		httpClient.getParams().setParameter(CoreProtocolPNames.USER_AGENT, DefineConst.NETWORK_HTTP_USER_AGENT + "1.0.0 ("
+		httpClient.getParams().setParameter(CoreProtocolPNames.USER_AGENT, DefineConst.NETWORK_HTTP_USER_AGENT + DefineConst.APP_VERSION+ " ("
 				+ Build.MODEL +"; " + Build.VERSION.RELEASE + ")");
 		try {
 			HttpGet httpGet = new HttpGet(uri);

@@ -6,6 +6,7 @@ import org.json.simple.JSONObject;
 
 import com.daddys40.network.NetworkRequestDoneListener;
 import com.daddys40.network.SignUpRequest;
+import com.daddys40.util.InstantUserData;
 import com.daddys40.util.LogUtil;
 import com.daddys40.util.ProgressDialogManager;
 
@@ -105,7 +106,10 @@ public class SignupActivity extends Activity {
 						ProgressDialogManager.dismiss();
 						LogUtil.e("Result", result);
 						LogUtil.e("Email", ((JSONObject) jsonObject.get("current_user")).get("email") + "");
-						// LogUtil.e("token", ((JSONObject)jsonObject.get("current_user")).get(""))
+						LogUtil.e("token", ((JSONObject)jsonObject.get("current_user")).get("authentication_token") + "");
+						InstantUserData.getInstance().setToken(((JSONObject)jsonObject.get("current_user")).get("authentication_token") + "");
+						startActivity(new Intent(SignupActivity.this,InvitingActivity.class));
+						finish();
 					}
 
 					@Override

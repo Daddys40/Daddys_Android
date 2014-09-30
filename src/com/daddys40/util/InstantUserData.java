@@ -11,11 +11,12 @@ public class InstantUserData {
 	private int height;
 	private int weight;
 	private String dday;
+	private String token;
 	
 	private InstantUserData(){
 		
 	}
-	public synchronized InstantUserData getInstance(){
+	public static synchronized InstantUserData getInstance(){
 		if(iud == null)
 			iud = new InstantUserData();
 		return iud;
@@ -46,6 +47,12 @@ public class InstantUserData {
 	}
 	public void setDday(String dday){
 		this.dday = dday;
+	}
+	public void setToken(String token){
+		this.token = token;
+	}
+	public String getToken(){
+		return token;
 	}
 	public void setData(String email, String pwd, String name, String gender, String baby_name, int age, int height, int weight, String dday){
 		setEmail(email);

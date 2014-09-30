@@ -1,20 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="#ffffff" >
 
     <TextView
-        android:id="@+id/tv_dlg_update_msg"
+        android:id="@+id/tv_dlg_update_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp" />
+        android:layout_margin="5dp"
+        android:text="업데이트가 필요합니다"
+        android:textColor="#9999ee" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/tv_dlg_update_title"
+        android:layout_margin="5dp"
+        android:background="#9999ee" />
 
     <Button
         android:id="@+id/btn_dlg_update_cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:text="취소" />
+        android:text="다음에 업데이트 하기" />
 
     <Button
         android:id="@+id/btn_dlg_update_ok"
@@ -23,5 +33,27 @@
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@id/btn_dlg_update_cancel"
         android:text="마켓으로 가기" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@id/btn_dlg_update_ok"
+        android:layout_margin="5dp"
+        android:background="#9999ee" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/btn_dlg_update_ok"
+        android:layout_below="@id/tv_dlg_update_title"
+        android:padding="10dp" >
+
+        <TextView
+            android:id="@+id/tv_dlg_update_msg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#9999ee"
+            android:padding="5dp" />
+    </ScrollView>
 
 </RelativeLayout>
