@@ -3,6 +3,7 @@ package com.daddys40;
 import org.json.simple.JSONObject;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Handler.Callback;
@@ -61,10 +62,13 @@ public class LoginActivity extends Activity {
 							ToastManager.getInstance().showToast(LoginActivity.this, jsonObject.get("errors") + "", 2000);
 						}
 						else{
-							ToastManager.getInstance().showToast(LoginActivity.this, "로그인 성공", 2000);
+//							ToastManager.getInstance().showToast(LoginActivity.this, "로그인 성공", 2000);
 							UserData.init(LoginActivity.this);
 							LogUtil.e("token", ((JSONObject) jsonObject.get("current_user")).get("authentication_token")+"");
 							UserData.getInstance().setToken(((JSONObject) jsonObject.get("current_user")).get("authentication_token")+"");
+							startActivity(new Intent(LoginActivity.this, FeedActivity.class));
+							setResult(1);
+							finish();
 						}
 					}
 					@Override

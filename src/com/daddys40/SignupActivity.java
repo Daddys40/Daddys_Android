@@ -4,16 +4,22 @@ import java.util.Calendar;
 
 import org.json.simple.JSONObject;
 
+import com.daddys40.alarm.EnrollAlarm;
+import com.daddys40.deprecated.SettingActivity;
 import com.daddys40.network.NetworkRequestDoneListener;
 import com.daddys40.network.SignUpRequest;
 import com.daddys40.util.InstantUserData;
 import com.daddys40.util.LogUtil;
 import com.daddys40.util.ProgressDialogManager;
+import com.daddys40.util.ToastManager;
+import com.daddys40.util.UserData;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.TimePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
+import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -21,6 +27,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TimePicker;
 
 public class SignupActivity extends Activity {
 
@@ -40,6 +47,10 @@ public class SignupActivity extends Activity {
 	private final String SELECT_FATHER = "male";
 	private final String SELECT_MOTHER = "female";
 	private String gender = SELECT_FATHER;
+	
+	private String mCurrentSetDay = "135";
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -63,6 +74,8 @@ public class SignupActivity extends Activity {
 		mBtnMother = (Button) findViewById(R.id.btn_signup_mother);
 		
 		mEtDday.setFocusable(false);
+		mEtAlarm = (EditText) findViewById(R.id.et_signup_time);
+		mEtAlarm.setFocusable(false);
 	}
 
 	private void initEvent() {
@@ -98,7 +111,8 @@ public class SignupActivity extends Activity {
 				SignUpRequest rq = new SignUpRequest(mEtEmail.getText().toString(), mEtPwd.getText().toString(),
 						mEtName.getText().toString(), gender, mEtName.getText().toString(),
 						mEtAge.getText().toString(), mEtHeight.getText().toString(), mEtWeight.getText().toString(),
-						mEtDday.getText().toString());
+						mEtDday.getText().toString(),"135", mEtAlarm.getText().toString());
+				//Alarm day setting UI needed
 				rq.setOnNetworkRequestDoneListener(new NetworkRequestDoneListener() {
 
 					@Override
@@ -109,6 +123,7 @@ public class SignupActivity extends Activity {
 						LogUtil.e("token", ((JSONObject)jsonObject.get("current_user")).get("authentication_token") + "");
 						InstantUserData.getInstance().setToken(((JSONObject)jsonObject.get("current_user")).get("authentication_token") + "");
 						startActivity(new Intent(SignupActivity.this,InvitingActivity.class));
+						setResult(1);
 						finish();
 					}
 
@@ -138,5 +153,31 @@ public class SignupActivity extends Activity {
 				mBtnMother.setBackgroundResource(R.drawable.btn_mother_selected);
 			}
 		});
+		mEtAlarm.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				TimePickerDialog timePicker = new TimePickerDialog(SignupActivity.this, new OnTimeSetListener() {
+					@Override
+					public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+//						UserData.getInstance().setAlarmTime(hourOfDay, minute);
+//						EnrollAlarm.getInstance().setAlarm(SignupActivity.this);
+						if (minute >= 10)
+							if(hourOfDay < 10)
+								mEtAlarm.setText("0" + hourOfDay + ":" + minute);
+							else
+								mEtAlarm.setText(hourOfDay + ":" + minute);
+						else
+							if(hourOfDay < 10)
+								mEtAlarm.setText("0" + hourOfDay + ":0" + minute);
+							else
+								mEtAlarm.setText(hourOfDay + ":0" + minute);
+					}
+				}, UserData.getInstance().getAlarmTimeHour(), UserData.getInstance().getAlarmTimeMin(), true);
+				timePicker.show();
+			}
+		});
 	}
+	
+	
 }

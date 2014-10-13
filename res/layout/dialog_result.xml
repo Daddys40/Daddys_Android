@@ -17,8 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="@drawable/sel_btn_setting_close"
-        android:visibility="gone" />
+        android:background="@drawable/sel_btn_setting_close" />
 
     <Button
         android:id="@+id/btn_result_next"
@@ -26,8 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_marginTop="10dp"
-        android:background="@drawable/sel_btn_dialog_next"
-        android:visibility="gone" />
+        android:background="@drawable/sel_btn_dialog_next" />
 
     <TextView
         android:id="@+id/tv_result_dialog_title"

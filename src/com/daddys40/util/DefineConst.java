@@ -13,5 +13,12 @@ public class DefineConst {
 	
 	public final static String NETWORK_URL_INVITING = "http://frenddy-env-syszgmhzr2.elasticbeanstalk.com/users/me/invitation";
 	
+	public final static String NETWORK_URL_FEED = "http://frenddy-env-syszgmhzr2.elasticbeanstalk.com/users/me/cards";
+	
+	public final static String NETWORK_URL_TERMS = "http://frenddy-env-syszgmhzr2.elasticbeanstalk.com/about/terms";
+	public final static String NETWORK_URL_PRIVACY = "http://frenddy-env-syszgmhzr2.elasticbeanstalk.com/about/privacy";
+	
+	public final static String NETWORK_URL_QUESTION_START = "http://frenddy-env-syszgmhzr2.elasticbeanstalk.com/users/me/questions/new";
+	public final static String NETWORK_URL_QUESTION_END = "http://frenddy-env-syszgmhzr2.elasticbeanstalk.com/users/me/questions";
 //	public final static String NETWORK_URL_STORE = "https://play.google.com/store/apps/details?id=com.daddys40";
 }

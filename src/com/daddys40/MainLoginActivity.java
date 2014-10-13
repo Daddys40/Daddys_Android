@@ -5,6 +5,7 @@ import org.json.simple.JSONObject;
 import com.daddys40.network.NetworkRequestDoneListener;
 import com.daddys40.network.RequestThread;
 import com.daddys40.network.SignInRequest;
+import com.daddys40.util.InstantUserData;
 import com.daddys40.util.LogUtil;
 import com.daddys40.util.ToastManager;
 import com.daddys40.util.UserData;
@@ -32,6 +33,7 @@ public class MainLoginActivity extends Activity {
 	private void checkToken(){
 		ToastManager.getInstance();
 		if(UserData.getInstance().getToken() != null){
+			InstantUserData.getInstance().setToken(UserData.getInstance().getToken());
 			RequestThread rq = new SignInRequest(UserData.getInstance().getToken());
 			rq.setOnNetworkRequestDoneListener(new NetworkRequestDoneListener() {
 				@Override
@@ -39,6 +41,8 @@ public class MainLoginActivity extends Activity {
 					//받아온 유저 데이터 저장
 					LogUtil.e("Auto Login Result", result);
 					ToastManager.getInstance().showToast(MainLoginActivity.this, "자동 로그인 성공", 2000);
+					startActivity(new Intent(MainLoginActivity.this, FeedActivity.class));
+					finish();
 				}
 				@Override
 				public void onExceptionError(Exception e) {
@@ -57,20 +61,26 @@ public class MainLoginActivity extends Activity {
 		mBtnLogin.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				startActivity(new Intent(MainLoginActivity.this, LoginActivity.class));
+				startActivityForResult(new Intent(MainLoginActivity.this, LoginActivity.class),0);
 			}
 		});
 		mBtnRegistration.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				startActivity(new Intent(MainLoginActivity.this, SignupActivity.class));
+				startActivityForResult(new Intent(MainLoginActivity.this, SignupActivity.class),0);
 			}
 		});
 		mBtnDoConnect.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				startActivity(new Intent(MainLoginActivity.this, InvitedActivity.class));
+				startActivityForResult(new Intent(MainLoginActivity.this, InvitedActivity.class),0);
 			}
 		});
+	}
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		if(resultCode == 1)
+			finish();
 	}
 }

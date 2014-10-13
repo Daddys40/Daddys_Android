@@ -114,16 +114,16 @@
             android:background="#ffffff" />
     </RelativeLayout>
 
-    <Button
-        android:id="@+id/btn_invited_find"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/blank"
-        android:text="아이디 / 비밀번호 찾기"
-        android:textColor="#ffffff"
-        android:textSize="15sp" />
+<!--     <Button -->
+<!--         android:id="@+id/btn_invited_find" -->
+<!--         android:layout_width="wrap_content" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:layout_gravity="center_horizontal" -->
+<!--         android:layout_marginTop="20dp" -->
+<!--         android:background="@drawable/blank" -->
+<!--         android:text="아이디 / 비밀번호 찾기" -->
+<!--         android:textColor="#ffffff" -->
+<!--         android:textSize="15sp" /> -->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -149,6 +149,7 @@
             android:textSize="13sp" />
 
         <Button
+            android:id="@+id/btn_terms"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/right_allow_icon" />
@@ -177,6 +178,7 @@
             android:textSize="13sp" />
 
         <Button
+            android:id="@+id/btn_privacy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/right_allow_icon" />

@@ -15,6 +15,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.daddys40.alarm.NotiMomQuestionActivity;
 import com.daddys40.network.NetworkRequestDoneListener;
 import com.daddys40.network.RequestThread;
 import com.daddys40.network.VersionCheckRequest;
@@ -100,7 +101,9 @@ public class LogoLodingActivity extends Activity {
 	private Handler startHandler = new Handler(new Callback() {
 		@Override
 		public boolean handleMessage(Message msg) {
-			startActivity(new Intent(LogoLodingActivity.this, MainLoginActivity.class));
+//			startActivity(new Intent(LogoLodingActivity.this, MainLoginActivity.class));
+			startActivity(new Intent(LogoLodingActivity.this, TutorialActivity.class));
+//			startActivity(new Intent(LogoLodingActivity.this, NotiMomQuestionActivity.class));
 			finish();
 			return false;
 		}

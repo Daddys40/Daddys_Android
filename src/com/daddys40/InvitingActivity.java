@@ -21,11 +21,14 @@ public class InvitingActivity extends Activity {
 	private EditText mEtYourNum;
 	private Button mBtnSend;
 	private Button mBtnSkip;
+	private boolean mFromFeed = false;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_inviting);
+		Intent intent = getIntent();
+		mFromFeed = intent.getBooleanExtra("FROM_FEED", false);
 		initView();
 		initEvent();
 	}
@@ -47,10 +50,10 @@ public class InvitingActivity extends Activity {
 					public void onFinish(String result, JSONObject jsonObject) {
 						LogUtil.e("Inviting Request Result", result);
 						LogUtil.e("Inviting code : ", jsonObject.get("invitation_code") + "");
-//						SmsManager smsManager = SmsManager.getDefault();
-//						smsManager.sendTextMessage(mEtYourNum.getText().toString(), null, 
-//								"문자 내용", null, null);
-//						startFeedActivity();
+						SmsManager smsManager = SmsManager.getDefault();
+						smsManager.sendTextMessage(mEtYourNum.getText().toString(), null, 
+								"초대코드 : " + jsonObject.get("invitation_code"), null, null);
+						startFeedActivity();
 					}
 					
 					@Override
@@ -65,12 +68,16 @@ public class InvitingActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				startFeedActivity();
+				if(mFromFeed)
+					finish();
+				else
+					startFeedActivity();
 			}
 		});
 	}
 	private void startFeedActivity(){
-		startActivity(new Intent(InvitingActivity.this, FeedActivity.class));
+		if(!mFromFeed)
+			startActivity(new Intent(InvitingActivity.this, FeedActivity.class));
 		finish();
 	}
 }

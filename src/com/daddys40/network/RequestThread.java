@@ -21,6 +21,7 @@ import org.json.simple.parser.JSONParser;
 import android.os.Build;
 
 import com.daddys40.util.DefineConst;
+import com.daddys40.util.LogUtil;
 
 public class RequestThread extends Thread{
 	protected NetworkRequestDoneListener networkListener = null;
@@ -76,6 +77,7 @@ public class RequestThread extends Thread{
 			}
 			httpPost.abort();
 			httpClient.getConnectionManager().shutdown();
+			LogUtil.e("Request Result", strBuilder.toString());
 			JSONParser parser = new JSONParser();
 			JSONObject jsonObject = (JSONObject) parser.parse(strBuilder.toString());
 			networkListener.onFinish(strBuilder.toString(), jsonObject);
