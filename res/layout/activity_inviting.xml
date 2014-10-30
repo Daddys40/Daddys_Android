@@ -12,44 +12,48 @@
         android:layout_marginTop="32dp"
         android:src="@drawable/invite_topicon" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="85dp"
-        android:gravity="center_horizontal" >
+    <!-- <RelativeLayout -->
+    <!-- android:layout_width="match_parent" -->
+    <!-- android:layout_height="wrap_content" -->
+    <!-- android:layout_gravity="center_horizontal" -->
+    <!-- android:layout_marginTop="85dp" -->
+    <!-- android:gravity="center_horizontal" > -->
 
-        <LinearLayout
-            android:id="@+id/invited_lay1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal" >
 
-            <EditText
-                android:id="@+id/et_inviting_mynum"
-                android:layout_width="220dp"
-                android:layout_height="33dp"
-                android:background="@drawable/blank"
-                android:hint="본인 전화번호"
-                android:inputType="number"
-                android:maxEms="12"
-                android:textColor="#ffffff"
-                android:textColorHint="#ffffff" />
+    <!-- <LinearLayout -->
+    <!-- android:id="@+id/invited_lay1" -->
+    <!-- android:layout_width="match_parent" -->
+    <!-- android:layout_height="wrap_content" -->
+    <!-- android:gravity="center" -->
+    <!-- android:orientation="horizontal" > -->
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/invite_phone_icon" />
-        </LinearLayout>
 
-        <ImageView
-            android:layout_width="235dp"
-            android:layout_height="3dp"
-            android:layout_below="@id/invited_lay1"
-            android:layout_centerHorizontal="true"
-            android:background="#ffffff" />
-    </RelativeLayout>
+    <!-- <EditText -->
+    <!-- android:id="@+id/et_inviting_mynum" -->
+    <!-- android:layout_width="220dp" -->
+    <!-- android:layout_height="33dp" -->
+    <!-- android:background="@drawable/blank" -->
+    <!-- android:hint="본인 전화번호" -->
+    <!-- android:inputType="number" -->
+    <!-- android:maxEms="12" -->
+    <!-- android:textColor="#ffffff" -->
+    <!-- android:textColorHint="#ffffff" /> -->
+
+
+    <!-- <ImageView -->
+    <!-- android:layout_width="wrap_content" -->
+    <!-- android:layout_height="wrap_content" -->
+    <!-- android:src="@drawable/invite_phone_icon" /> -->
+    <!-- </LinearLayout> -->
+
+
+    <!-- <ImageView -->
+    <!-- android:layout_width="235dp" -->
+    <!-- android:layout_height="3dp" -->
+    <!-- android:layout_below="@id/invited_lay1" -->
+    <!-- android:layout_centerHorizontal="true" -->
+    <!-- android:background="#ffffff" /> -->
+    <!-- </RelativeLayout> -->
 
     <RelativeLayout
         android:layout_width="match_parent"

@@ -9,14 +9,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.daddys40.alarm.FatherAlarmManger;
-import com.daddys40.util.LogUtil;
-import com.daddys40.util.UserData;
-
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Environment;
+
+import com.daddys40.util.LogUtil;
+import com.daddys40.util.UserData;
+
+
 /**
  * 컨텐츠를 담고 관리하는 클래스
  * @author Kim

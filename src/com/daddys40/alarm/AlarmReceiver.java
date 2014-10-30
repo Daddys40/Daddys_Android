@@ -21,10 +21,9 @@ public class AlarmReceiver extends BroadcastReceiver {
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		// Toast.makeText(context, "Alarm Received!", Toast.LENGTH_LONG).show();
+		UserData.init(context);
 		if (Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())) {
 			LogUtil.e("Receiver", "BOOT COMPLETED RECEIVER");
-			UserData.init(context);
-			MyAlarmManager myAlarmManager;
 			EnrollAlarm.getInstance().setAlarm(context);
 //			Intent intent2 = new Intent(context, BootAlarmActivity.class);
 //			intent2.putExtras(intent);
@@ -36,7 +35,11 @@ public class AlarmReceiver extends BroadcastReceiver {
 			NotificationManager notifier = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 			Notification notify = new Notification(R.drawable.ic_launcher, "text", System.currentTimeMillis());
 
-			Intent intent2 = new Intent(context, NotiDialogActivity.class);
+			Intent intent2 = null;
+			if(UserData.getInstance().getSex() == UserData.SEX_FEMALE)
+				intent2 = new Intent(context, NotiMomQuestionActivity.class);
+			else
+				intent2 = new Intent(context, NotiDialogActivity.class);
 			intent2.putExtras(intent);
 			intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			context.startActivity(intent2);

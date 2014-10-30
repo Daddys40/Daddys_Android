@@ -1,5 +1,6 @@
 package com.daddys40.alarm;
 
+import com.daddys40.data.InstantUserData;
 import com.daddys40.util.UserData;
 
 import android.content.Context;
@@ -23,11 +24,10 @@ public class EnrollAlarm {
 
 	public void setAlarm(Context context) {
 		MyAlarmManager myAlarmManager = null;
-		UserData.init(context);
-		if(UserData.getInstance().getSex() == UserData.SEX_MALE)
+//		if(UserData.getInstance().getSex() == UserData.SEX_MALE)
 			myAlarmManager = new FatherAlarmManger();
-		else
-			myAlarmManager = new MotherAlarmManager();
+//		else
+//			myAlarmManager = new MotherAlarmManager();
 		myAlarmManager.setAlarm(context);
 	}
 }

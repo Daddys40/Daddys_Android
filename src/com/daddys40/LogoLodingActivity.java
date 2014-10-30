@@ -22,6 +22,7 @@ import com.daddys40.network.VersionCheckRequest;
 import com.daddys40.util.DialogMaker;
 import com.daddys40.util.LogUtil;
 import com.daddys40.util.ToastManager;
+import com.daddys40.util.UserData;
 
 public class LogoLodingActivity extends Activity {
 	private Dialog updateDlg = null;
@@ -102,7 +103,11 @@ public class LogoLodingActivity extends Activity {
 		@Override
 		public boolean handleMessage(Message msg) {
 //			startActivity(new Intent(LogoLodingActivity.this, MainLoginActivity.class));
-			startActivity(new Intent(LogoLodingActivity.this, TutorialActivity.class));
+			UserData.init(LogoLodingActivity.this);
+			if(!UserData.getInstance().isTutorialOk())
+				startActivity(new Intent(LogoLodingActivity.this, TutorialActivity.class));
+			else
+				startActivity(new Intent(LogoLodingActivity.this, MainLoginActivity.class));
 //			startActivity(new Intent(LogoLodingActivity.this, NotiMomQuestionActivity.class));
 			finish();
 			return false;

@@ -32,17 +32,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/btn_feed_setting"
-        android:paddingTop="15dp"
+        android:paddingTop="25dp"
         android:scrollbars="none"
         android:paddingLeft="30dp"
         android:paddingRight="30dp" >
     </ListView>
-
-    <Button
-        android:id="@+id/btn_feed_logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:text="logout" />
 
 </RelativeLayout>

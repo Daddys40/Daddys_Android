@@ -1,5 +1,7 @@
 package com.daddys40;
 
+import java.util.Calendar;
+
 import org.json.simple.JSONObject;
 
 import android.app.Activity;
@@ -14,6 +16,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.daddys40.alarm.EnrollAlarm;
+import com.daddys40.alarm.FatherAlarmManger;
+import com.daddys40.alarm.MotherAlarmManager;
+import com.daddys40.alarm.MyAlarmManager;
+import com.daddys40.data.InstantUserData;
 import com.daddys40.network.NetworkRequestDoneListener;
 import com.daddys40.network.SignInRequest;
 import com.daddys40.util.LogUtil;
@@ -65,7 +72,44 @@ public class LoginActivity extends Activity {
 //							ToastManager.getInstance().showToast(LoginActivity.this, "로그인 성공", 2000);
 							UserData.init(LoginActivity.this);
 							LogUtil.e("token", ((JSONObject) jsonObject.get("current_user")).get("authentication_token")+"");
+							
 							UserData.getInstance().setToken(((JSONObject) jsonObject.get("current_user")).get("authentication_token")+"");
+							UserData.getInstance().setAlarmDay(((JSONObject) jsonObject.get("current_user")).get("notifications_days") + "");
+							UserData.getInstance().setAlarmTime( Integer.parseInt((((JSONObject) jsonObject.get("current_user")).get("notificate_at") + "").substring(0, 2)),
+									Integer.parseInt((((JSONObject) jsonObject.get("current_user")).get("notificate_at") + "").substring(3, 5)));
+							InstantUserData.getInstance().setToken(((JSONObject) jsonObject.get("current_user")).get("authentication_token")+"");
+							
+							UserData.getInstance().setSex(((JSONObject) jsonObject.get("current_user")).get("gender") + "");
+							InstantUserData.getInstance().setGender(((JSONObject) jsonObject.get("current_user")).get("gender") + "");
+							InstantUserData.getInstance().setAlarmDay(((JSONObject) jsonObject.get("current_user")).get("notifications_days") + "");
+							InstantUserData.getInstance().setAlarmTime(((JSONObject) jsonObject.get("current_user")).get("notificate_at") + "");
+							InstantUserData.getInstance().setAge(((JSONObject) jsonObject.get("current_user")).get("age") + "");
+							InstantUserData.getInstance().setWeight(((JSONObject) jsonObject.get("current_user")).get("weight") + "");
+							InstantUserData.getInstance().setHeight(((JSONObject) jsonObject.get("current_user")).get("height") + "");
+							
+							String strCal = ((JSONObject) jsonObject.get("current_user")).get("baby_due") + "";
+							if(strCal.equals(""))
+								strCal =((JSONObject)((JSONObject) jsonObject.get("current_user")).get("partner")).get("baby_due") + "";
+							LogUtil.e("Baby Due", strCal);
+							Calendar cal = Calendar.getInstance();
+							cal.set(Calendar.YEAR, Integer.parseInt(strCal.substring(0, 4)));
+							cal.set(Calendar.MONTH, Integer.parseInt(strCal.substring(5, 7)));
+							cal.set(Calendar.DAY_OF_MONTH, Integer.parseInt(strCal.substring(8,10)));
+							LogUtil.e("Baby Due Cal", cal.toString());
+							UserData.getInstance().setCalendar(cal);
+							
+							if(!(((JSONObject) jsonObject.get("current_user")).get("partner") + "").equals("null"))
+								InstantUserData.getInstance().setConnected(true);
+							EnrollAlarm.getInstance().setAlarm(LoginActivity.this);
+							
+//							if((((JSONObject) jsonObject.get("current_user")).get("gender")+"").equals("male")){
+//								myAlarmManager = new FatherAlarmManger();
+//							}
+//							else{
+//								myAlarmManager = new MotherAlarmManager();
+//							}
+//							myAlarmManager.setAlarm(LoginActivity.this);
+							
 							startActivity(new Intent(LoginActivity.this, FeedActivity.class));
 							setResult(1);
 							finish();

@@ -39,8 +39,11 @@ public class UserData {
 	public boolean isInitialized(){
 		return mSharedPreferences.getBoolean(INITIALIZED, false);
 	}
-	public void setSex(int sex){
-		mEditor.putInt(SEX, sex);
+	public void setSex(String sex){
+		if(sex.equals("male"))
+			mEditor.putInt(SEX, SEX_MALE);
+		else
+			mEditor.putInt(SEX, SEX_FEMALE);
 		mEditor.commit();
 	}
 	public int getSex(){
@@ -92,6 +95,49 @@ public class UserData {
 	public int getAlarmTimeMin(){
 		return mSharedPreferences.getInt("min", 30);
 	}
+	public void setAlarmDay(String str){
+		mEditor.putString("days", str);
+		mEditor.commit();
+	}
+	public String getAlarmDay(){
+		return mSharedPreferences.getString("days", "135");
+	}
+	public void setChangeLatestFeed(){
+		mEditor.putInt("change_week" + getToken(), currentWeek());
+		mEditor.putInt("change_count"+ getToken(), getAnswerCount());
+		mEditor.commit();
+	}
+//	public void setFeedReset(){
+//		mEditor.putInt("change_week", currentWeek());
+//		mEditor.putInt("change_count", getAnswerCount());
+//		mEditor.commit();
+//	}
+	public boolean isLatestFeed(){
+		int week = mSharedPreferences.getInt("change_week"+ getToken(), -1);
+		int count = mSharedPreferences.getInt("change_count"+ getToken(), -1);
+		if(week == currentWeek()){
+			if(count < getAnswerCount())
+				return false;
+			else 
+				return true;
+		}
+		return false;
+	}
+	public int getAnswerCount(){
+		int day1 = Integer.parseInt(getAlarmDay().toCharArray()[0] + "");
+		int day2 = Integer.parseInt(getAlarmDay().toCharArray()[1] + "");
+		int day3 = Integer.parseInt(getAlarmDay().toCharArray()[2] + "");
+		
+		Calendar cal = Calendar.getInstance();
+		if((cal.get(Calendar.DAY_OF_WEEK) + 1) <= day1){
+			return 1;
+		}
+		else if((cal.get(Calendar.DAY_OF_WEEK) + 1) <= day2){
+			return 2;
+		}
+		else
+			return 3;
+	}
 	public int currentWeek() {
 		Calendar dueCal;
 		int week;
@@ -118,22 +164,22 @@ public class UserData {
 		else
 			return week;
 	}
-	public void setEventOk(){
-		mEditor.putBoolean("EVENT", true);
+	public void setTutorialOk(){
+		mEditor.putBoolean("TUTORIAL", true);
 		mEditor.commit();
 	}
-	public boolean isEventOk(){
-		return mSharedPreferences.getBoolean("EVENT", false);
+	public boolean isTutorialOk(){
+		return mSharedPreferences.getBoolean("TUTORIAL", false);
 	}
-	public void encEventCounter(){
-		int count = mSharedPreferences.getInt("EVENT_C", 0);
-		count++;
-		mEditor.putInt("EVENT_C",  count);
-		mEditor.commit();
-	}
-	public int getEventCount(){
-		return mSharedPreferences.getInt("EVENT_C", 0);
-	}
+//	public void encEventCounter(){
+//		int count = mSharedPreferences.getInt("EVENT_C", 0);
+//		count++;
+//		mEditor.putInt("EVENT_C",  count);
+//		mEditor.commit();
+//	}
+//	public int getEventCount(){
+//		return mSharedPreferences.getInt("EVENT_C", 0);
+//	}
 //	public void setSleepCoachOk(){
 //		mEditor.putBoolean("SLEEP", true);
 //		mEditor.commit();
@@ -142,27 +188,27 @@ public class UserData {
 //		return mSharedPreferences.getBoolean("SLEEP", false);
 //	}
 	
-	public void setAge(int age){
-		mEditor.putInt("age", age);
-		mEditor.commit();
-	}
-	public void setHeight(int height){
-		mEditor.putInt("height", height);
-		mEditor.commit();
-	}
-	public void setWeight(int weight){
-		mEditor.putInt("weight", weight);
-		mEditor.commit();
-	}
-	public int getAge(){
-		return mSharedPreferences.getInt("age", 0);
-	}
-	public int getHeight(){
-		return mSharedPreferences.getInt("height", 0);
-	}
-	public int getWeight(){
-		return mSharedPreferences.getInt("weight", 0);
-	}
+//	public void setAge(int age){
+//		mEditor.putInt("age", age);
+//		mEditor.commit();
+//	}
+//	public void setHeight(int height){
+//		mEditor.putInt("height", height);
+//		mEditor.commit();
+//	}
+//	public void setWeight(int weight){
+//		mEditor.putInt("weight", weight);
+//		mEditor.commit();
+//	}
+//	public int getAge(){
+//		return mSharedPreferences.getInt("age", 0);
+//	}
+//	public int getHeight(){
+//		return mSharedPreferences.getInt("height", 0);
+//	}
+//	public int getWeight(){
+//		return mSharedPreferences.getInt("weight", 0);
+//	}
 //	추가된부분
 	public void setToken(String token){
 		mEditor.putString(TOKEN, token);

@@ -2,6 +2,7 @@ package com.daddys40.util;
 
 public class DefineConst {
 	public final static String APP_VERSION = "0.0.0";
+	public final static boolean logOn = true;
 	
 	public final static String NETWORK_HTTP_USER_AGENT = "Frenddy Android/";
 	public final static String NETWORK_URL_VIRSION_CHECK = "http://frenddy-env-syszgmhzr2.elasticbeanstalk.com/app/version.json";
@@ -12,6 +13,7 @@ public class DefineConst {
 	public final static String NETWORK_URL_VALIDATE = "http://frenddy-env-syszgmhzr2.elasticbeanstalk.com/users/validate";
 	
 	public final static String NETWORK_URL_INVITING = "http://frenddy-env-syszgmhzr2.elasticbeanstalk.com/users/me/invitation";
+	public final static String NETWORK_URL_UPDATE = "http://frenddy-env-syszgmhzr2.elasticbeanstalk.com/users/me";
 	
 	public final static String NETWORK_URL_FEED = "http://frenddy-env-syszgmhzr2.elasticbeanstalk.com/users/me/cards";
 	
@@ -20,5 +22,5 @@ public class DefineConst {
 	
 	public final static String NETWORK_URL_QUESTION_START = "http://frenddy-env-syszgmhzr2.elasticbeanstalk.com/users/me/questions/new";
 	public final static String NETWORK_URL_QUESTION_END = "http://frenddy-env-syszgmhzr2.elasticbeanstalk.com/users/me/questions";
-//	public final static String NETWORK_URL_STORE = "https://play.google.com/store/apps/details?id=com.daddys40";
+	public final static String NETWORK_URL_STORE = "http://frenddy-env-syszgmhzr2.elasticbeanstalk.com/app/install";
 }

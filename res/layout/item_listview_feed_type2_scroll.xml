@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#f0000000" >
+
+    <RelativeLayout
+        android:id="@+id/layout_item_feed_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp" >
+
+        <TextView
+            android:id="@+id/tv_item_feed_week"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:textColor="#ffffff"
+            android:textSize="50sp" />
+
+        <TextView
+            android:id="@+id/tv_item_feed_week_const"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tv_item_feed_week"
+            android:paddingTop="20dp"
+            android:text="WEEK"
+            android:textColor="#ffffff" />
+
+        <TextView
+            android:id="@+id/tv_item_feed_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@id/tv_item_feed_week_const"
+            android:paddingTop="20dp"
+            android:textColor="#ffffff"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/iv_item_feed_img"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:layout_below="@id/tv_item_feed_week" />
+
+        <TextView
+            android:id="@+id/tv_item_feed_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_item_feed_img"
+            android:textColor="#ffffff" />
+
+<!--         <Button -->
+<!--             android:id="@+id/btn_item_feed_extend" -->
+<!--             android:layout_width="wrap_content" -->
+<!--             android:layout_height="wrap_content" -->
+<!--             android:layout_alignParentBottom="true" -->
+<!--             android:layout_alignParentRight="true" -->
+<!--             android:layout_below="@id/tv_item_feed_content" -->
+<!--             android:background="@drawable/sel_btn_feed_extend" /> -->
+    </RelativeLayout>
+
+</RelativeLayout>

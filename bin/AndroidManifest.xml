@@ -18,7 +18,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/icon"
+        android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
         <service android:name="com.daddys40.sleep.SleepService" >
@@ -40,6 +40,10 @@
         </activity>
         <activity
             android:name="com.daddys40.TutorialActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+                <activity
+            android:name="com.daddys40.SettingActivity"
             android:screenOrientation="portrait" >
         </activity>
         <activity
@@ -86,22 +90,19 @@
         <!-- </activity> -->
         <!-- <activity android:name="com.daddys40.deprecated.SettingActivityingActivity" > -->
         <!-- </activity> -->
-        <!-- <activity -->
-        <!-- android:name="com.daddys40.alarm.NotiDialogActivity" -->
-        <!-- android:theme="@android:style/Theme.Dialog" > -->
-        <!-- </activity> -->
+        <activity
+            android:name="com.daddys40.alarm.NotiDialogActivity"
+            android:theme="@android:style/Theme.Dialog" >
+        </activity>
 
-
-        <!-- <receiver -->
-        <!-- android:name="com.daddys40.alarm.AlarmReceiver" -->
-        <!-- android:process=":remote" > -->
-        <!-- <intent-filter> -->
-        <!-- <action android:name="android.intent.action.BOOT_COMPLETED" /> -->
-        <!-- </intent-filter> -->
-        <!-- </receiver> -->
-
-
-        <!-- <meta-data -->
+        <receiver
+            android:name="com.daddys40.alarm.AlarmReceiver"
+            android:process=":remote" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+<!-- <meta-data -->
         <!-- android:name="com.kakao.sdk.AppKey" -->
         <!-- android:value="@string/kakao_app_key" /> -->
     </application>

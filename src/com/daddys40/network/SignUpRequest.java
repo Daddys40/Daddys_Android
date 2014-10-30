@@ -1,12 +1,6 @@
 package com.daddys40.network;
 
-import java.util.Calendar;
-import java.util.TimeZone;
-
-import org.json.simple.JSONObject;
-
 import com.daddys40.util.DefineConst;
-import com.daddys40.util.InstantUserData;
 import com.daddys40.util.LogUtil;
 
 public class SignUpRequest extends RequestThread {

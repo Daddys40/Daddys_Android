@@ -1,139 +1,346 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/splash_bg" >
+    android:background="@drawable/invite_background"
+    android:orientation="vertical" >
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:layout_height="match_parent"
+        android:scrollbars="none" >
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="8" ><!-- <RelativeLayout -->
+            <!-- android:layout_width="match_parent" -->
+            <!-- android:layout_height="wrap_content" -->
+            <!-- android:layout_marginTop="40dp" > -->
+
+
+            <!-- <ImageView -->
+            <!-- android:layout_width="wrap_content" -->
+            <!-- android:layout_height="wrap_content" -->
+            <!-- android:layout_marginLeft="55dp" -->
+            <!-- android:src="@drawable/signup_bodyinfo2" /> -->
+
+
+            <!-- <TextView -->
+            <!-- android:layout_width="wrap_content" -->
+            <!-- android:layout_height="wrap_content" -->
+            <!-- android:layout_centerInParent="true" -->
+            <!-- android:text="임산부 신체정보" -->
+            <!-- android:textColor="#ffffff" -->
+            <!-- android:textSize="20sp" /> -->
+            <!-- </RelativeLayout> -->
+
+
+            <!-- <TextView -->
+            <!-- android:layout_width="wrap_content" -->
+            <!-- android:layout_height="wrap_content" -->
+            <!-- android:layout_gravity="right" -->
+            <!-- android:layout_marginRight="55dp" -->
+            <!-- android:layout_marginTop="20dp" -->
+            <!-- android:text="선택입력사항" -->
+            <!-- android:textColor="#ffffff" -->
+            <!-- android:textSize="15sp" /> -->
+
+
+            <!-- <RelativeLayout -->
+            <!-- android:layout_width="match_parent" -->
+            <!-- android:layout_height="wrap_content" -->
+            <!-- android:layout_gravity="center_horizontal" -->
+            <!-- android:layout_marginTop="10dp" -->
+            <!-- android:gravity="center_horizontal" > -->
+
+
+            <!-- <LinearLayout -->
+            <!-- android:id="@+id/signup_lay10" -->
+            <!-- android:layout_width="match_parent" -->
+            <!-- android:layout_height="wrap_content" -->
+            <!-- android:gravity="center" -->
+            <!-- android:orientation="horizontal" > -->
+
+
+            <!-- <EditText -->
+            <!-- android:id="@+id/et_signup_age" -->
+            <!-- android:layout_width="215dp" -->
+            <!-- android:layout_height="33dp" -->
+            <!-- android:background="@drawable/blank" -->
+            <!-- android:hint="나이" -->
+            <!-- android:inputType="number" -->
+            <!-- android:maxLength="3" -->
+            <!-- android:textColor="#ffffff" -->
+            <!-- android:textColorHint="#ffffff" /> -->
+
+
+            <!-- <TextView -->
+            <!-- android:layout_width="wrap_content" -->
+            <!-- android:layout_height="wrap_content" -->
+            <!-- android:text="age" -->
+            <!-- android:textColor="#ffffff" -->
+            <!-- android:textSize="20sp" /> -->
+            <!-- </LinearLayout> -->
+
+
+            <!-- <ImageView -->
+            <!-- android:layout_width="245dp" -->
+            <!-- android:layout_height="3dp" -->
+            <!-- android:layout_below="@id/signup_lay10" -->
+            <!-- android:layout_centerHorizontal="true" -->
+            <!-- android:background="#ffffff" /> -->
+            <!-- </RelativeLayout> -->
+
+
+            <!-- <RelativeLayout -->
+            <!-- android:layout_width="match_parent" -->
+            <!-- android:layout_height="wrap_content" -->
+            <!-- android:layout_gravity="center_horizontal" -->
+            <!-- android:layout_marginTop="25dp" -->
+            <!-- android:gravity="center_horizontal" > -->
+
+
+            <!-- <LinearLayout -->
+            <!-- android:id="@+id/signup_lay6" -->
+            <!-- android:layout_width="match_parent" -->
+            <!-- android:layout_height="wrap_content" -->
+            <!-- android:gravity="center" -->
+            <!-- android:orientation="horizontal" > -->
+
+
+            <!-- <EditText -->
+            <!-- android:id="@+id/et_signup_height" -->
+            <!-- android:layout_width="215dp" -->
+            <!-- android:layout_height="33dp" -->
+            <!-- android:background="@drawable/blank" -->
+            <!-- android:hint="키" -->
+            <!-- android:inputType="number" -->
+            <!-- android:maxLength="3" -->
+            <!-- android:textColor="#ffffff" -->
+            <!-- android:textColorHint="#ffffff" /> -->
+
+
+            <!-- <TextView -->
+            <!-- android:layout_width="wrap_content" -->
+            <!-- android:layout_height="wrap_content" -->
+            <!-- android:text="cm" -->
+            <!-- android:textColor="#ffffff" -->
+            <!-- android:textSize="20sp" /> -->
+            <!-- </LinearLayout> -->
+
+
+            <!-- <ImageView -->
+            <!-- android:layout_width="245dp" -->
+            <!-- android:layout_height="3dp" -->
+            <!-- android:layout_below="@id/signup_lay6" -->
+            <!-- android:layout_centerHorizontal="true" -->
+            <!-- android:background="#ffffff" /> -->
+            <!-- </RelativeLayout> -->
+
+
+            <!-- <RelativeLayout -->
+            <!-- android:layout_width="match_parent" -->
+            <!-- android:layout_height="wrap_content" -->
+            <!-- android:layout_gravity="center_horizontal" -->
+            <!-- android:layout_marginTop="25dp" -->
+            <!-- android:gravity="center_horizontal" > -->
+
+
+            <!-- <LinearLayout -->
+            <!-- android:id="@+id/signup_lay7" -->
+            <!-- android:layout_width="match_parent" -->
+            <!-- android:layout_height="wrap_content" -->
+            <!-- android:gravity="center" -->
+            <!-- android:orientation="horizontal" > -->
+
+
+            <!-- <EditText -->
+            <!-- android:id="@+id/et_signup_weight" -->
+            <!-- android:layout_width="215dp" -->
+            <!-- android:layout_height="33dp" -->
+            <!-- android:background="@drawable/blank" -->
+            <!-- android:hint="몸무게" -->
+            <!-- android:inputType="number" -->
+            <!-- android:maxLength="3" -->
+            <!-- android:textColor="#ffffff" -->
+            <!-- android:textColorHint="#ffffff" /> -->
+
+
+            <!-- <TextView -->
+            <!-- android:layout_width="wrap_content" -->
+            <!-- android:layout_height="wrap_content" -->
+            <!-- android:text="kg" -->
+            <!-- android:textColor="#ffffff" -->
+            <!-- android:textSize="20sp" /> -->
+            <!-- </LinearLayout> -->
+
+
+            <!-- <ImageView -->
+            <!-- android:layout_width="245dp" -->
+            <!-- android:layout_height="3dp" -->
+            <!-- android:layout_below="@id/signup_lay7" -->
+            <!-- android:layout_centerHorizontal="true" -->
+            <!-- android:background="#ffffff" /> -->
+            <!-- </RelativeLayout> -->
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="55dp"
+                    android:src="@drawable/signup_alarm_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="임신정보 알람설정"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:gravity="center_horizontal" >
+
+                <LinearLayout
+                    android:id="@+id/signup_lay8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <EditText
+                        android:id="@+id/et_signup_time"
+                        android:layout_width="240dp"
+                        android:layout_height="33dp"
+                        android:background="@drawable/blank"
+                        android:hint="알람시간"
+                        android:inputType="datetime"
+                        android:textColor="#ffffff"
+                        android:textColorHint="#ffffff" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="245dp"
+                    android:layout_height="3dp"
+                    android:layout_below="@id/signup_lay8"
+                    android:layout_centerHorizontal="true"
+                    android:background="#ffffff" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/btn_signup_0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
+                    android:background="@drawable/day0"
+                    android:padding="5dp" />
+
+                <Button
+                    android:id="@+id/btn_signup_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
+                    android:background="@drawable/day1"
+                    android:padding="5dp" />
+
+                <Button
+                    android:id="@+id/btn_signup_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
+                    android:background="@drawable/day2"
+                    android:padding="5dp" />
+
+                <Button
+                    android:id="@+id/btn_signup_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
+                    android:background="@drawable/day3"
+                    android:padding="5dp" />
+
+                <Button
+                    android:id="@+id/btn_signup_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
+                    android:background="@drawable/day4"
+                    android:padding="5dp" />
+
+                <Button
+                    android:id="@+id/btn_signup_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
+                    android:background="@drawable/day5"
+                    android:padding="5dp" />
+
+                <Button
+                    android:id="@+id/btn_signup_6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
+                    android:background="@drawable/day6"
+                    android:padding="5dp" />
+            </LinearLayout>
 
             <Button
-                android:id="@+id/btn_setting_back"
-                android:layout_width="wrap_content"
+                android:id="@+id/btn_setting_save"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@drawable/sel_btn_setting_close" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_gravity="center"
-                android:layout_margin="15dp"
-                android:text="SETTING"
+                android:background="@drawable/blank"
+                android:layout_marginTop="20dp"
+                android:gravity="center_horizontal"
+                android:text="변경내용 저장"
                 android:textColor="#ffffff"
-                android:textSize="23sp" />
+                android:textSize="20sp" />
 
-            <Button
-                android:id="@+id/btn_setting_edit"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_margin="10dp"
-                android:background="@drawable/sel_btn_setting_edit" />
-        </RelativeLayout>
+                android:layout_marginTop="30dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal" >
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
-            android:src="@drawable/setting_profileicon" />
+                <Button
+                    android:id="@+id/btn_setting_logout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/blank"
+                    android:text="로그아웃"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/tv_setting_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="야꿍이"
-            android:textColor="#ffffff" />
+                <Button
+                    android:id="@+id/btn_setting_logout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:background="@drawable/blank"
+                    android:text="회원탈퇴"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:text="아기는 지금"
-            android:textColor="#ffffff" />
-
-        <TextView
-            android:id="@+id/tv_setting_week"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginRight="20dp"
-            android:text="xx주"
-            android:textColor="#ffffff"
-            android:textSize="25sp"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_margin="10dp"
-            android:background="#ffffff" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="5dp"
-            android:text="출산 예정일"
-            android:textColor="#ffffff" />
-
-        <TextView
-            android:id="@+id/tv_setting_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginRight="20dp"
-            android:textColor="#ffffff"
-            android:textSize="25sp"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_margin="10dp"
-            android:background="#ffffff" />
-
-        <TextView
-            android:id="@+id/tv_setting_time_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="5dp"
-            android:text="알람시간"
-            android:textColor="#ffffff" />
-
-        <TextView
-            android:id="@+id/tv_setting_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginRight="20dp"
-            android:textColor="#ffffff"
-            android:textSize="25sp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/tv_setting_suggestion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_gravity="bottom"
-        android:layout_margin="5dp"
-        android:background="#444444"
-        android:padding="5dp"
-        android:text="더 자상한 아빠의 40주를 위해 제안하기"
-        android:textColor="#ffffff" />
-
-</RelativeLayout>
+</LinearLayout>
