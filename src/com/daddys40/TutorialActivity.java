@@ -1,7 +1,5 @@
 package com.daddys40;
 
-import com.daddys40.util.UserData;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +7,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+
+import com.daddys40.util.UserData;
 
 public class TutorialActivity extends Activity {
 	private Button mBtnNext;
@@ -21,7 +21,7 @@ public class TutorialActivity extends Activity {
 
 	private final int BACKGROUND[] = { R.drawable.img_tutorial_01, R.drawable.img_tutorial_02,
 			R.drawable.img_tutorial_03, R.drawable.img_tutorial_04, R.drawable.img_tutorial_05,
-			R.drawable.img_tutorial_06,R.drawable.img_tutorial_07,R.drawable.img_tutorial_08 };
+			R.drawable.img_tutorial_06,R.drawable.img_tutorial_07,R.drawable.img_tutorial_08,R.drawable.img_tutorial_09,R.drawable.img_tutorial_10 };
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +43,7 @@ public class TutorialActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				mCurrentState++;
-				if(mCurrentState == 8){
+				if(mCurrentState == BACKGROUND.length){
 					UserData.init(TutorialActivity.this);
 					UserData.getInstance().setTutorialOk();
 					startActivity(new Intent(TutorialActivity.this, MainLoginActivity.class));

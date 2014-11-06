@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="300dp"
     android:layout_height="200dp"
-    android:background="@drawable/daddys40_alarm2_02" >
+    android:background="@drawable/daddys40_alarm" >
 
     <TextView
         android:id="@+id/tv_noti_title"

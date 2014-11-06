@@ -45,13 +45,14 @@ public class SignUpRequest extends RequestThread {
 //		requestType = TYPE_SIGN_UP;
 	}
 
-	public SignUpRequest(String email, String pwd, String invitation_code, String alarm_day ,String alarm_time) {
+	public SignUpRequest(String email, String pwd, String invitation_code, String alarm_day ,String alarm_time, String name) {
 		addParams("user[email]", email);
 		addParams("user[password]", pwd);
 		addParams("user[partner_invitation_code]", invitation_code);
 		
 		addParams("user[notifications_days]", alarm_day);
 		addParams("user[notificate_at]", alarm_time);
+		addParams("user[name]", name);
 		
 		LogUtil.e("Sign Up Request send Data", email +"/"+pwd + "/" + invitation_code + "/" + alarm_day + "/" + alarm_time);
 //		requestType = TYPE_INVITED;

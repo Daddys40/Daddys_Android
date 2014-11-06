@@ -3,8 +3,6 @@ package com.daddys40.util;
 import java.io.File;
 import java.util.Calendar;
 
-import com.daddys40.alarm.NotiDialogActivity;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Environment;
@@ -130,13 +128,13 @@ public class UserData {
 		
 		Calendar cal = Calendar.getInstance();
 		if((cal.get(Calendar.DAY_OF_WEEK) + 1) <= day1){
-			return 1;
+			return 0;
 		}
 		else if((cal.get(Calendar.DAY_OF_WEEK) + 1) <= day2){
-			return 2;
+			return 1;
 		}
 		else
-			return 3;
+			return 2;
 	}
 	public int currentWeek() {
 		Calendar dueCal;
@@ -153,6 +151,8 @@ public class UserData {
 			week = cal.getMaximum(Calendar.DAY_OF_YEAR) - cal.get(Calendar.DAY_OF_YEAR) + dueCal.get(Calendar.DAY_OF_YEAR);
 			LogUtil.e("Function currentWeek", "current week is next year");
 		}
+		LogUtil.e("Set Month? ",dueCal.toString());
+		LogUtil.e("Day",week + "");
 		week = week/7;
 		week = 40 - week;
 		LogUtil.e("Now Week", "Calc week : " + week);

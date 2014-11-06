@@ -9,13 +9,13 @@ import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.params.CoreProtocolPNames;
-import org.apache.http.params.HttpParams;
 import org.apache.http.protocol.HTTP;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -124,6 +124,33 @@ public class RequestThread extends Thread{
 				strBuilder.append(line);
 			}
 			httpPut.abort();
+			httpClient.getConnectionManager().shutdown();
+			LogUtil.e("Request Result", strBuilder.toString());
+			JSONParser parser = new JSONParser();
+			JSONObject jsonObject = (JSONObject) parser.parse(strBuilder.toString());
+			networkListener.onFinish(strBuilder.toString(), jsonObject);
+		}
+		catch (Exception e) {
+			networkListener.onExceptionError(e);
+			e.printStackTrace();
+		}
+	}
+	protected void httpDeleteMethod(String uri){
+		HttpClient httpClient = new DefaultHttpClient();
+		httpClient.getParams().setParameter(CoreProtocolPNames.USER_AGENT, DefineConst.NETWORK_HTTP_USER_AGENT);
+		try {
+			UrlEncodedFormEntity ent = new UrlEncodedFormEntity(params, HTTP.UTF_8);
+			HttpDelete httpDelete = new HttpDelete(uri);
+			HttpResponse httpResponse;
+			httpResponse = httpClient.execute(httpDelete);
+			BufferedReader rd = new BufferedReader(new InputStreamReader(
+					httpResponse.getEntity().getContent()));
+			StringBuilder strBuilder = new StringBuilder();
+			String line;
+			while ((line = rd.readLine()) != null) {
+				strBuilder.append(line);
+			}
+			httpDelete.abort();
 			httpClient.getConnectionManager().shutdown();
 			LogUtil.e("Request Result", strBuilder.toString());
 			JSONParser parser = new JSONParser();

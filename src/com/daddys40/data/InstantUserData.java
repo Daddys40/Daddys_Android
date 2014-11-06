@@ -1,6 +1,7 @@
 package com.daddys40.data;
 
-import java.util.Calendar;
+import android.graphics.Path;
+
 
 public class InstantUserData {
 	
@@ -17,11 +18,15 @@ public class InstantUserData {
 	private String token;
 	private String alarm_day;
 	private String alarm_time;
+	private String partnerName;
 	
 	private boolean connected = false;
 	
 	private InstantUserData(){
 		
+	}
+	public static void resetInstantUserData(){
+		iud = new InstantUserData();
 	}
 	public static synchronized InstantUserData getInstance(){
 		if(iud == null)
@@ -101,5 +106,11 @@ public class InstantUserData {
 	}
 	public boolean isConnected(){
 		return connected;
+	}
+	public void setPartnerName(String name){
+		partnerName = name;
+	}
+	public String getPartnerName(){
+		return partnerName;
 	}
 }

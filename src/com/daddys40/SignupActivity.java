@@ -5,7 +5,6 @@ import java.util.Calendar;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.Dialog;
@@ -19,15 +18,17 @@ import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.NumberPicker;
 import android.widget.TimePicker;
 
-import com.daddys40.alarm.EnrollAlarm;
 import com.daddys40.data.InstantUserData;
 import com.daddys40.network.NetworkRequestDoneListener;
 import com.daddys40.network.SignUpRequest;
 import com.daddys40.util.DefineConst;
 import com.daddys40.util.DialogMaker;
 import com.daddys40.util.LogUtil;
+import com.daddys40.util.MyTagManager;
 import com.daddys40.util.ProgressDialogManager;
 import com.daddys40.util.ToastManager;
 import com.daddys40.util.UserData;
@@ -56,6 +57,7 @@ public class SignupActivity extends MyActivity {
 	private String mCurrentSetDay = "135";
 	
 	private Button mBtnDay[] = new Button[7];
+	private ImageView mDayLine[] = new ImageView[7];
 	private boolean daySelect[] = {false,true,false,true,false,true,false};
 	private final int  DAY_BACKGROUND[] = {R.drawable.day0,R.drawable.day1,R.drawable.day2,R.drawable.day3,R.drawable.day4,R.drawable.day5,R.drawable.day6};
 	private final int  DAY_BACKGROUND_SELECTED[] = {R.drawable.day0_select,R.drawable.day1_select,R.drawable.day2_select,R.drawable.day3_select,R.drawable.day4_select
@@ -107,12 +109,14 @@ public class SignupActivity extends MyActivity {
 			daySelect[day_index] = false;
 			daySelectNumber++;
 			mBtnDay[day_index].setBackgroundResource(DAY_BACKGROUND[day_index]);
+			mDayLine[day_index].setVisibility(View.INVISIBLE);
 		}
 		else
 		{
 			daySelect[day_index] = true;
 			daySelectNumber--;
 			mBtnDay[day_index].setBackgroundResource(DAY_BACKGROUND_SELECTED[day_index]);
+			mDayLine[day_index].setVisibility(View.VISIBLE);
 		}
 		mCurrentSetDay = "";
 		for(int i = 0; i < 7; i++){
@@ -129,6 +133,7 @@ public class SignupActivity extends MyActivity {
 		setBackPressMessage("메인 화면으로 돌아가시겠습니까?");
 		initView();
 		initEvent();
+		MyTagManager.getInstance(this).send("n_appview", "Signup Activity");
 	}
 
 	private void initView() {
@@ -150,6 +155,9 @@ public class SignupActivity extends MyActivity {
 		mEtAge = (EditText) findViewById(R.id.et_signup_age);
 		mEtHeight = (EditText) findViewById(R.id.et_signup_height);
 		mEtWeight = (EditText) findViewById(R.id.et_signup_weight);
+		mEtAge.setFocusable(false);
+		mEtHeight.setFocusable(false);
+		mEtWeight.setFocusable(false);
 		
 		mBtnFather = (Button) findViewById(R.id.btn_signup_father);
 		mBtnMother = (Button) findViewById(R.id.btn_signup_mother);
@@ -158,11 +166,81 @@ public class SignupActivity extends MyActivity {
 		mEtAlarm = (EditText) findViewById(R.id.et_signup_time);
 		mEtAlarm.setFocusable(false);
 		
-		for( int i= 0 ; i < 7 ; i++ )
-			mBtnDay[i] = (Button) findViewById(R.id.btn_signup_0 + i);
+		mBtnDay[0] = (Button) findViewById(R.id.btn_signup_0);
+		mBtnDay[1] = (Button) findViewById(R.id.btn_signup_1);
+		mBtnDay[2] = (Button) findViewById(R.id.btn_signup_2);
+		mBtnDay[3] = (Button) findViewById(R.id.btn_signup_3);
+		mBtnDay[4] = (Button) findViewById(R.id.btn_signup_4);
+		mBtnDay[5] = (Button) findViewById(R.id.btn_signup_5);
+		mBtnDay[6] = (Button) findViewById(R.id.btn_signup_6);
+
+		mDayLine[0] = (ImageView) findViewById(R.id.dayline_0);
+		mDayLine[1] = (ImageView) findViewById(R.id.dayline_1);
+		mDayLine[2] = (ImageView) findViewById(R.id.dayline_2);
+		mDayLine[3] = (ImageView) findViewById(R.id.dayline_3);
+		mDayLine[4] = (ImageView) findViewById(R.id.dayline_4);
+		mDayLine[5] = (ImageView) findViewById(R.id.dayline_5);
+		mDayLine[6] = (ImageView) findViewById(R.id.dayline_6);
 	}
 
 	private void initEvent() {
+mEtAge.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				DialogMaker dm = new DialogMaker(SignupActivity.this, R.layout.dialog_numpicker,0.6,0.35);
+				final Dialog dlg = dm.getDialog();
+				dlg.show();
+				((NumberPicker) dlg.findViewById(R.id.numberPicker)).setMaxValue(100);
+				((NumberPicker) dlg.findViewById(R.id.numberPicker)).setMinValue(10);
+				((NumberPicker) dlg.findViewById(R.id.numberPicker)).setValue(30);
+				((Button) dlg.findViewById(R.id.btn_numberPicker_ok)).setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View arg0) {
+						dlg.dismiss();
+						mEtAge.setText(((NumberPicker) dlg.findViewById(R.id.numberPicker)).getValue() + "");
+					}
+				});
+			}
+		});
+mEtWeight.setOnClickListener(new OnClickListener() {
+	
+	@Override
+	public void onClick(View arg0) {
+		DialogMaker dm = new DialogMaker(SignupActivity.this, R.layout.dialog_numpicker,0.6,0.35);
+		final Dialog dlg = dm.getDialog();
+		dlg.show();
+		((NumberPicker) dlg.findViewById(R.id.numberPicker)).setMaxValue(150);
+		((NumberPicker) dlg.findViewById(R.id.numberPicker)).setMinValue(30);
+		((NumberPicker) dlg.findViewById(R.id.numberPicker)).setValue(55);
+		((Button) dlg.findViewById(R.id.btn_numberPicker_ok)).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				dlg.dismiss();
+				mEtWeight.setText(((NumberPicker) dlg.findViewById(R.id.numberPicker)).getValue() + "");
+			}
+		});
+	}
+});
+mEtHeight.setOnClickListener(new OnClickListener() {
+	
+	@Override
+	public void onClick(View arg0) {
+		DialogMaker dm = new DialogMaker(SignupActivity.this, R.layout.dialog_numpicker,0.6,0.35);
+		final Dialog dlg = dm.getDialog();
+		dlg.show();
+		((NumberPicker) dlg.findViewById(R.id.numberPicker)).setMaxValue(210);
+		((NumberPicker) dlg.findViewById(R.id.numberPicker)).setMinValue(130);
+		((NumberPicker) dlg.findViewById(R.id.numberPicker)).setValue(160);
+		((Button) dlg.findViewById(R.id.btn_numberPicker_ok)).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				dlg.dismiss();
+				mEtHeight.setText(((NumberPicker) dlg.findViewById(R.id.numberPicker)).getValue() + "");
+			}
+		});
+	}
+});
 mBtnPrivacy.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -310,6 +388,7 @@ mBtnPrivacy.setOnClickListener(new OnClickListener() {
 							InstantUserData.getInstance().setToken(((JSONObject)jsonObject.get("current_user")).get("authentication_token") + "");
 							startActivity(new Intent(SignupActivity.this,InvitingActivity.class));
 							setResult(0);
+							ToastManager.getInstance().showToast(SignupActivity.this, "회원가입이 되셨습니다.", 1000);
 							finish();
 						}
 					}

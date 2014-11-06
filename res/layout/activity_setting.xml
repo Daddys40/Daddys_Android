@@ -14,7 +14,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:weightSum="8" ><!-- <RelativeLayout -->
+            android:weightSum="8" >
+
+            <TextView
+                android:id="@+id/tv_setting_dday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="50dp"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+            <!-- <RelativeLayout -->
             <!-- android:layout_width="match_parent" -->
             <!-- android:layout_height="wrap_content" -->
             <!-- android:layout_marginTop="40dp" > -->
@@ -185,7 +195,6 @@
             <!-- android:background="#ffffff" /> -->
             <!-- </RelativeLayout> -->
 
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -246,69 +255,167 @@
                 android:gravity="center_horizontal"
                 android:orientation="horizontal" >
 
-                <Button
-                    android:id="@+id/btn_signup_0"
+                <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="3dp"
-                    android:background="@drawable/day0"
-                    android:padding="5dp" />
+                    android:layout_margin="3dp" >
 
-                <Button
-                    android:id="@+id/btn_signup_1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="3dp"
-                    android:background="@drawable/day1"
-                    android:padding="5dp" />
+                    <Button
+                        android:id="@+id/btn_signup_0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/day0"
+                        android:padding="5dp" />
 
-                <Button
-                    android:id="@+id/btn_signup_2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="3dp"
-                    android:background="@drawable/day2"
-                    android:padding="5dp" />
+                    <ImageView
+                        android:id="@+id/dayline_0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/btn_signup_0"
+                        android:layout_marginTop="1dp"
+                        android:background="@drawable/day_line"
+                        android:visibility="invisible" />
+                </RelativeLayout>
 
-                <Button
-                    android:id="@+id/btn_signup_3"
+                <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="3dp"
-                    android:background="@drawable/day3"
-                    android:padding="5dp" />
+                    android:layout_margin="3dp" >
 
-                <Button
-                    android:id="@+id/btn_signup_4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="3dp"
-                    android:background="@drawable/day4"
-                    android:padding="5dp" />
+                    <Button
+                        android:id="@+id/btn_signup_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/day1"
+                        android:padding="5dp" />
 
-                <Button
-                    android:id="@+id/btn_signup_5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="3dp"
-                    android:background="@drawable/day5"
-                    android:padding="5dp" />
+                    <ImageView
+                        android:id="@+id/dayline_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/btn_signup_1"
+                        android:layout_marginTop="1dp"
+                        android:background="@drawable/day_line"
+                        android:visibility="invisible" />
+                </RelativeLayout>
 
-                <Button
-                    android:id="@+id/btn_signup_6"
+                <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="3dp"
-                    android:background="@drawable/day6"
-                    android:padding="5dp" />
+                    android:layout_margin="3dp" >
+
+                    <Button
+                        android:id="@+id/btn_signup_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/day2"
+                        android:padding="5dp" />
+
+                    <ImageView
+                        android:id="@+id/dayline_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/btn_signup_2"
+                        android:layout_marginTop="1dp"
+                        android:background="@drawable/day_line"
+                        android:visibility="invisible" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp" >
+
+                    <Button
+                        android:id="@+id/btn_signup_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/day3"
+                        android:padding="5dp" />
+
+                    <ImageView
+                        android:id="@+id/dayline_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/btn_signup_3"
+                        android:layout_marginTop="1dp"
+                        android:background="@drawable/day_line"
+                        android:visibility="invisible" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp" >
+
+                    <Button
+                        android:id="@+id/btn_signup_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/day4"
+                        android:padding="5dp" />
+
+                    <ImageView
+                        android:id="@+id/dayline_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/btn_signup_4"
+                        android:layout_marginTop="1dp"
+                        android:background="@drawable/day_line"
+                        android:visibility="invisible" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp" >
+
+                    <Button
+                        android:id="@+id/btn_signup_5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/day5"
+                        android:padding="5dp" />
+
+                    <ImageView
+                        android:id="@+id/dayline_5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/btn_signup_5"
+                        android:layout_marginTop="1dp"
+                        android:background="@drawable/day_line"
+                        android:visibility="invisible" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp" >
+
+                    <Button
+                        android:id="@+id/btn_signup_6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/day6"
+                        android:padding="5dp" />
+
+                    <ImageView
+                        android:id="@+id/dayline_6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/btn_signup_6"
+                        android:layout_marginTop="1dp"
+                        android:background="@drawable/day_line"
+                        android:visibility="invisible" />
+                </RelativeLayout>
             </LinearLayout>
 
             <Button
                 android:id="@+id/btn_setting_save"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/blank"
                 android:layout_marginTop="20dp"
+                android:background="@drawable/blank"
                 android:gravity="center_horizontal"
                 android:text="변경내용 저장"
                 android:textColor="#ffffff"
@@ -331,7 +438,7 @@
                     android:textSize="20sp" />
 
                 <Button
-                    android:id="@+id/btn_setting_logout"
+                    android:id="@+id/btn_setting_delete"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="50dp"

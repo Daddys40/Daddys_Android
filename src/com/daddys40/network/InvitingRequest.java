@@ -2,7 +2,6 @@ package com.daddys40.network;
 
 
 import com.daddys40.util.DefineConst;
-import com.daddys40.util.LogUtil;
 
 public class InvitingRequest extends RequestThread{
 	private String mToken = null;

@@ -8,7 +8,6 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.daddys40.R;
-import com.daddys40.R.drawable;
 import com.daddys40.util.LogUtil;
 import com.daddys40.util.UserData;
 /**

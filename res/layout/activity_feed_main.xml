@@ -27,6 +27,15 @@
 	    android:layout_marginRight="30dp"
 	    android:layout_marginTop="25dp"
 	    android:background="@drawable/sel_btn_invitation"/>
+		<Button 
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:id="@+id/btn_feed_connected"
+	    android:layout_alignParentRight="true"
+	    android:layout_marginRight="30dp"
+	    android:visibility="gone"
+	    android:layout_marginTop="20dp"
+	    android:background="@drawable/btn_connected"/>
     <ListView
         android:id="@+id/ListView_feed"
         android:layout_width="match_parent"

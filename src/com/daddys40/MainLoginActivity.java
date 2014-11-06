@@ -4,6 +4,13 @@ import java.util.Calendar;
 
 import org.json.simple.JSONObject;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+
 import com.daddys40.alarm.EnrollAlarm;
 import com.daddys40.data.InstantUserData;
 import com.daddys40.network.NetworkRequestDoneListener;
@@ -12,13 +19,6 @@ import com.daddys40.network.SignInRequest;
 import com.daddys40.util.LogUtil;
 import com.daddys40.util.ToastManager;
 import com.daddys40.util.UserData;
-
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
 
 public class MainLoginActivity extends Activity {
 	private Button mBtnLogin;
@@ -62,8 +62,10 @@ public class MainLoginActivity extends Activity {
 					InstantUserData.getInstance().setWeight(((JSONObject) jsonObject.get("current_user")).get("weight") + "");
 					InstantUserData.getInstance().setHeight(((JSONObject) jsonObject.get("current_user")).get("height") + "");
 					EnrollAlarm.getInstance().setAlarm(MainLoginActivity.this);
-					if(!(((JSONObject) jsonObject.get("current_user")).get("partner") + "").equals("null"))
+					if(!(((JSONObject) jsonObject.get("current_user")).get("partner") + "").equals("null")){
 						InstantUserData.getInstance().setConnected(true);
+						InstantUserData.getInstance().setPartnerName((((JSONObject)((JSONObject) jsonObject.get("current_user")).get("partner"))).get("name") + "");
+					}
 					
 					String strCal = ((JSONObject) jsonObject.get("current_user")).get("baby_due") + "";
 					if(strCal.equals(""))
@@ -71,7 +73,7 @@ public class MainLoginActivity extends Activity {
 					LogUtil.e("Baby Due", strCal);
 					Calendar cal = Calendar.getInstance();
 					cal.set(Calendar.YEAR, Integer.parseInt(strCal.substring(0, 4)));
-					cal.set(Calendar.MONTH, Integer.parseInt(strCal.substring(5, 7)));
+					cal.set(Calendar.MONTH, Integer.parseInt(strCal.substring(5, 7)) - 1);
 					cal.set(Calendar.DAY_OF_MONTH, Integer.parseInt(strCal.substring(8,10)));
 					LogUtil.e("Baby Due Cal", cal.toString());
 					UserData.getInstance().setCalendar(cal);

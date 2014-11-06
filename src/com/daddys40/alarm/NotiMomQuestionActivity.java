@@ -13,6 +13,7 @@ import com.daddys40.R;
 import com.daddys40.util.DefineConst;
 import com.daddys40.util.LogUtil;
 import com.daddys40.util.MySystem;
+import com.daddys40.util.MyTagManager;
 import com.daddys40.util.ToastManager;
 import com.daddys40.util.UserData;
 
@@ -39,6 +40,8 @@ public class NotiMomQuestionActivity extends Activity {
 		.loadUrl(DefineConst.NETWORK_URL_QUESTION_START+"?authentication_token="+UserData.getInstance().getToken()+"&week="
 		+ UserData.getInstance().currentWeek() +"&count=" + UserData.getInstance().getAnswerCount());
 		ToastManager.getInstance().init();
+		MyTagManager.getInstance(this).send("n_appview", "Push dialog_mom");
+		
 		((WebView) findViewById(R.id.webview_noti_mom))
 				.setWebViewClient(new WebViewClient() {
 					@Override
@@ -52,5 +55,11 @@ public class NotiMomQuestionActivity extends Activity {
 						}
 					}
 				});
+	}
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		super.onBackPressed();
+		MyTagManager.getInstance(NotiMomQuestionActivity.this).sendEvent("N_Back button on push dialog_mom");
 	}
 }

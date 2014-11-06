@@ -5,7 +5,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v4.app.DialogFragment;
-import android.view.GestureDetector;
 import android.view.Window;
 import android.view.WindowManager;
 /**

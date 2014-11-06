@@ -9,6 +9,7 @@ public class FeedRequest extends RequestThread {
 	int id = -1;
 	String requestVar = "";
 	public FeedRequest() {
+		LogUtil.e("Feed request Current Week", UserData.getInstance().currentWeek()+"");
 		if(!UserData.getInstance().isLatestFeed() && UserData.getInstance().currentWeek() <= 40 && UserData.getInstance().currentWeek() >= 5){
 			requestVar += "&week="+UserData.getInstance().currentWeek()+"&count="+UserData.getInstance().getAnswerCount();
 			LogUtil.e("Current Week & count", "&week="+UserData.getInstance().currentWeek()+"&count="+UserData.getInstance().getAnswerCount());

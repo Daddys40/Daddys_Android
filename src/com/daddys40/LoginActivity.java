@@ -7,19 +7,12 @@ import org.json.simple.JSONObject;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.daddys40.alarm.EnrollAlarm;
-import com.daddys40.alarm.FatherAlarmManger;
-import com.daddys40.alarm.MotherAlarmManager;
-import com.daddys40.alarm.MyAlarmManager;
 import com.daddys40.data.InstantUserData;
 import com.daddys40.network.NetworkRequestDoneListener;
 import com.daddys40.network.SignInRequest;
@@ -93,13 +86,16 @@ public class LoginActivity extends Activity {
 							LogUtil.e("Baby Due", strCal);
 							Calendar cal = Calendar.getInstance();
 							cal.set(Calendar.YEAR, Integer.parseInt(strCal.substring(0, 4)));
-							cal.set(Calendar.MONTH, Integer.parseInt(strCal.substring(5, 7)));
+							cal.set(Calendar.MONTH, Integer.parseInt(strCal.substring(5, 7)) - 1);
+					
 							cal.set(Calendar.DAY_OF_MONTH, Integer.parseInt(strCal.substring(8,10)));
 							LogUtil.e("Baby Due Cal", cal.toString());
 							UserData.getInstance().setCalendar(cal);
 							
-							if(!(((JSONObject) jsonObject.get("current_user")).get("partner") + "").equals("null"))
+							if(!(((JSONObject) jsonObject.get("current_user")).get("partner") + "").equals("null")){
 								InstantUserData.getInstance().setConnected(true);
+								InstantUserData.getInstance().setPartnerName((((JSONObject)((JSONObject) jsonObject.get("current_user")).get("partner"))).get("name") + "");
+							}
 							EnrollAlarm.getInstance().setAlarm(LoginActivity.this);
 							
 //							if((((JSONObject) jsonObject.get("current_user")).get("gender")+"").equals("male")){

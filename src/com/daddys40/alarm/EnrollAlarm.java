@@ -1,8 +1,5 @@
 package com.daddys40.alarm;
 
-import com.daddys40.data.InstantUserData;
-import com.daddys40.util.UserData;
-
 import android.content.Context;
 /**
  * 알람 등록시 실행하는 클래스

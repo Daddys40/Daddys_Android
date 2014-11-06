@@ -2,36 +2,39 @@ package com.daddys40;
 
 import org.json.simple.JSONObject;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.app.TimePickerDialog.OnTimeSetListener;
 import android.os.Bundle;
+import android.text.InputType;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.webkit.WebChromeClient;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
-import com.daddys40.network.InvitingRequest;
 import com.daddys40.network.NetworkRequestDoneListener;
 import com.daddys40.network.RequestThread;
 import com.daddys40.network.SignUpRequest;
 import com.daddys40.util.DefineConst;
 import com.daddys40.util.DialogMaker;
 import com.daddys40.util.LogUtil;
+import com.daddys40.util.MyTagManager;
 import com.daddys40.util.ToastManager;
 import com.daddys40.util.UserData;
 
-public class InvitedActivity extends Activity {
+public class InvitedActivity extends MyActivity {
 	
 	private EditText mEtCode;
 	private EditText mEtEmail;
 	private EditText mEtPwd;
 	private EditText mEtPwdRepeat;
+	private EditText mEtName;
+	
 	private Button mBtnConnect;
 	
 	private Button mBtnTerms;
@@ -47,6 +50,7 @@ public class InvitedActivity extends Activity {
 	private String mCurrentSetDay = "135";
 	private EditText mEtAlarm;
 	private Button mBtnDay[] = new Button[7];
+	private ImageView mDayLine[] = new ImageView[7];
 	private boolean daySelect[] = {false,true,false,true,false,true,false};
 	private final int  DAY_BACKGROUND[] = {R.drawable.day0,R.drawable.day1,R.drawable.day2,R.drawable.day3,R.drawable.day4,R.drawable.day5,R.drawable.day6};
 	private final int  DAY_BACKGROUND_SELECTED[] = {R.drawable.day0_select,R.drawable.day1_select,R.drawable.day2_select,R.drawable.day3_select,R.drawable.day4_select
@@ -89,12 +93,14 @@ public class InvitedActivity extends Activity {
 			daySelect[day_index] = false;
 			daySelectNumber++;
 			mBtnDay[day_index].setBackgroundResource(DAY_BACKGROUND[day_index]);
+			mDayLine[day_index].setVisibility(View.INVISIBLE);
 		}
 		else
 		{
 			daySelect[day_index] = true;
 			daySelectNumber--;
 			mBtnDay[day_index].setBackgroundResource(DAY_BACKGROUND_SELECTED[day_index]);
+			mDayLine[day_index].setVisibility(View.VISIBLE);
 		}
 		mCurrentSetDay = "";
 		for(int i = 0; i < 7; i++){
@@ -109,8 +115,10 @@ public class InvitedActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_invited);
+		setBackPressMessage("메인 화면으로 돌아가시겠습니까?");
 		initView();
 		initEvent();
+		MyTagManager.getInstance(this).send("n_appview", "Invited Activity");
 	}
 
 	private void initView() {
@@ -121,14 +129,28 @@ public class InvitedActivity extends Activity {
 		mBtnConnect = (Button) findViewById(R.id.btn_invited_connecting);
 		mCheckService = findViewById(R.id.check_box_service);
 		mCheckPrivacy = findViewById(R.id.check_box_privacy);
+		mEtName = (EditText) findViewById(R.id.et_signup_name);
 		
 		mBtnTerms = (Button) findViewById(R.id.btn_terms);
 		mBtnPrivacy = (Button) findViewById(R.id.btn_privacy);
 		
 		mEtAlarm = (EditText) findViewById(R.id.et_signup_time);
 		mEtAlarm.setFocusable(false);
-		for( int i= 0 ; i < 7 ; i++ )
-			mBtnDay[i] = (Button) findViewById(R.id.btn_signup_0 + i);
+		mBtnDay[0] = (Button) findViewById(R.id.btn_signup_0);
+		mBtnDay[1] = (Button) findViewById(R.id.btn_signup_1);
+		mBtnDay[2] = (Button) findViewById(R.id.btn_signup_2);
+		mBtnDay[3] = (Button) findViewById(R.id.btn_signup_3);
+		mBtnDay[4] = (Button) findViewById(R.id.btn_signup_4);
+		mBtnDay[5] = (Button) findViewById(R.id.btn_signup_5);
+		mBtnDay[6] = (Button) findViewById(R.id.btn_signup_6);
+
+		mDayLine[0] = (ImageView) findViewById(R.id.dayline_0);
+		mDayLine[1] = (ImageView) findViewById(R.id.dayline_1);
+		mDayLine[2] = (ImageView) findViewById(R.id.dayline_2);
+		mDayLine[3] = (ImageView) findViewById(R.id.dayline_3);
+		mDayLine[4] = (ImageView) findViewById(R.id.dayline_4);
+		mDayLine[5] = (ImageView) findViewById(R.id.dayline_5);
+		mDayLine[6] = (ImageView) findViewById(R.id.dayline_6);
 	}
 
 	private void initEvent() {
@@ -230,6 +252,14 @@ public class InvitedActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
+				String code = ""; 
+				for(int i = 0; i < mEtCode.getText().toString().length(); i++){
+					if(mEtCode.getText().toString().toCharArray()[i] >= 'a' && mEtCode.getText().toString().toCharArray()[i] <= 'z')
+						code += Character.toUpperCase(mEtCode.getText().toString().toCharArray()[i]);
+					else
+						code += mEtCode.getText().toString().toCharArray()[i];
+				}
+				mEtCode.setText(code);
 				if(!mToggleService){
 					ToastManager.getInstance().showToast(InvitedActivity.this, "가입을 위해선 서비스 이용약관에 동의하셔야 합니다.", 1000);
 					return;
@@ -242,6 +272,10 @@ public class InvitedActivity extends Activity {
 					ToastManager.getInstance().showToast(InvitedActivity.this, "알람을 받으실 시간을 입력해주세요.", 1000);
 					return;
 				}
+				if(mEtName.getText().toString().equals("")){
+					ToastManager.getInstance().showToast(InvitedActivity.this, "사용자분의 이름을 입력해주세요.", 1000);
+					return;
+				}
 				if(daySelectNumber != 3){
 					ToastManager.getInstance().showToast(InvitedActivity.this, "알람을 받으실 요일은 반드시 3개여야 합니다.", 1000);
 					return;
@@ -251,12 +285,13 @@ public class InvitedActivity extends Activity {
 					return;
 				}
 				RequestThread rq = new SignUpRequest(mEtEmail.getText().toString(),mEtPwd.getText().toString(),
-						mEtCode.getText().toString(),mCurrentSetDay,mEtAlarm.getText().toString());
+						mEtCode.getText().toString(),mCurrentSetDay,mEtAlarm.getText().toString(),mEtName.getText().toString());
 				rq.setOnNetworkRequestDoneListener(new NetworkRequestDoneListener() {
 					
 					@Override
 					public void onFinish(String result, JSONObject jsonObject) {
 						LogUtil.e("Invited connect result", result);
+						ToastManager.getInstance().showToast(InvitedActivity.this, "연동 완료", 1000);
 						finish();
 					}
 					

@@ -7,7 +7,6 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 
-import com.daddys40.data.InstantUserData;
 import com.daddys40.util.LogUtil;
 import com.daddys40.util.UserData;
 
