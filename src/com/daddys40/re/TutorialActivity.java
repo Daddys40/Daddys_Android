@@ -1,4 +1,4 @@
-package com.daddys40;
+package com.daddys40.re;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,6 +8,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
+import com.daddys40.util.MyTagManager;
 import com.daddys40.util.UserData;
 
 public class TutorialActivity extends Activity {
@@ -29,6 +30,11 @@ public class TutorialActivity extends Activity {
 		setContentView(R.layout.activity_tutorial);
 		initView();
 		initEvent();
+	}
+	@Override
+	protected void onStart() {
+		super.onStart();
+		MyTagManager.getInstance(this).send("appview", "N_Tutorial Activity");
 	}
 
 	private void initView() {

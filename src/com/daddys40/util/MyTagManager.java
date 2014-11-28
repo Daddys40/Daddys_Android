@@ -24,10 +24,10 @@ public class MyTagManager {
 		
 	}
 	static public synchronized MyTagManager getInstance(Context context){
-		if(mMyTagManager == null){
+//		if(mMyTagManager == null){
 			mMyTagManager = new MyTagManager();
 			mMyTagManager.init(context);
-		}
+//		}
 		return mMyTagManager;
 	}
 	private void init(Context context){

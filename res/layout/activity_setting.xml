@@ -1,11 +1,25 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/invite_background"
-    android:orientation="vertical" >
+    android:background="@drawable/invite_background">
+    
+    <Button 
+        android:id="@+id/btn_setting_suggestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="의견 보내기"
+        android:layout_margin="2dp"
+        android:background="#404040"
+        android:padding="8dp"
+        android:textColor="#ffffff"
+        
+        />
 
     <ScrollView
+        android:layout_above="@id/btn_setting_suggestion"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="none" >
@@ -450,4 +464,4 @@
         </LinearLayout>
     </ScrollView>
 
-</LinearLayout>
+</RelativeLayout>

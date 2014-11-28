@@ -1,4 +1,4 @@
-package com.daddys40;
+package com.daddys40.re;
 
 import java.util.ArrayList;
 
@@ -69,6 +69,11 @@ public class FeedActivity extends MyActivity {
 		isResume = true;
 		super.onResume();
 	}
+	@Override
+	protected void onStart() {
+		super.onStart();
+		MyTagManager.getInstance(this).send("appview", "N_Feed Activity");
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -83,9 +88,6 @@ public class FeedActivity extends MyActivity {
 		setBackPressMessage("앱을 종료하시겠습니까?");
 		initView();
 		initEvent();
-		
-		MyTagManager.getInstance(this).send("n_appview", "Feed Activity");
-		
 		RequestThread rq = new FeedRequest();
 		
 		rq.setOnNetworkRequestDoneListener(new NetworkRequestDoneListener() {

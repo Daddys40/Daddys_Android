@@ -281,7 +281,7 @@
                     android:id="@+id/btn_signup_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/day1_select"
+                    android:background="@drawable/day1"
                     android:padding="5dp" />
 
                 <ImageView
@@ -290,7 +290,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/btn_signup_1"
                     android:layout_marginTop="1dp"
-                    android:background="@drawable/day_line" />
+                    android:background="@drawable/day_line"
+                    android:visibility="invisible" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -324,7 +325,7 @@
                     android:id="@+id/btn_signup_3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/day3_select"
+                    android:background="@drawable/day3"
                     android:padding="5dp" />
 
                 <ImageView
@@ -333,7 +334,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/btn_signup_3"
                     android:layout_marginTop="1dp"
-                    android:background="@drawable/day_line" />
+                    android:background="@drawable/day_line"
+                    android:visibility="invisible" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -367,7 +369,7 @@
                     android:id="@+id/btn_signup_5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/day5_select"
+                    android:background="@drawable/day5"
                     android:padding="5dp" />
 
                 <ImageView
@@ -376,7 +378,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/btn_signup_5"
                     android:layout_marginTop="1dp"
-                    android:background="@drawable/day_line" />
+                    android:background="@drawable/day_line"
+                    android:visibility="invisible" />
             </RelativeLayout>
 
             <RelativeLayout

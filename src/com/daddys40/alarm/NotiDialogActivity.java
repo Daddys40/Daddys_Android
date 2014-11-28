@@ -9,8 +9,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
-import com.daddys40.LogoLodingActivity;
-import com.daddys40.R;
+import com.daddys40.re.LogoLodingActivity;
+import com.daddys40.re.R;
 import com.daddys40.util.MySystem;
 import com.daddys40.util.MyTagManager;
 import com.daddys40.util.UserData;
@@ -27,7 +27,6 @@ public class NotiDialogActivity extends Activity {
 		win.requestFeature(Window.FEATURE_NO_TITLE);
 		UserData.init(NotiDialogActivity.this);
 		if (UserData.getInstance().currentWeek() >= 5 || UserData.getInstance().currentWeek() <= 41) {
-			MyTagManager.getInstance(this).send("n_appview", "Push dialog");
 			getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
 					| WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD //잠금 화면 위에 뜨게 하기.
 					| WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON); //화면 깨우기
@@ -41,6 +40,7 @@ public class NotiDialogActivity extends Activity {
 
 				@Override
 				public void onClick(View arg0) {
+					MyTagManager.getInstance(NotiDialogActivity.this).sendEvent("N_Go to app on push dialog_male");
 					Intent intent = new Intent(NotiDialogActivity.this, LogoLodingActivity.class);
 					startActivity(intent);
 					finish();
@@ -50,6 +50,11 @@ public class NotiDialogActivity extends Activity {
 		else {
 			finish();
 		}
+	}
+	@Override
+	protected void onStart() {
+		super.onStart();
+		MyTagManager.getInstance(this).send("appview", "N_Push dialog_male");
 	}
 	@Override
 	public void onBackPressed() {

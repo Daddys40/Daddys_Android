@@ -8,8 +8,8 @@ import android.view.WindowManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.daddys40.LogoLodingActivity;
-import com.daddys40.R;
+import com.daddys40.re.LogoLodingActivity;
+import com.daddys40.re.R;
 import com.daddys40.util.DefineConst;
 import com.daddys40.util.LogUtil;
 import com.daddys40.util.MySystem;
@@ -40,7 +40,6 @@ public class NotiMomQuestionActivity extends Activity {
 		.loadUrl(DefineConst.NETWORK_URL_QUESTION_START+"?authentication_token="+UserData.getInstance().getToken()+"&week="
 		+ UserData.getInstance().currentWeek() +"&count=" + UserData.getInstance().getAnswerCount());
 		ToastManager.getInstance().init();
-		MyTagManager.getInstance(this).send("n_appview", "Push dialog_mom");
 		
 		((WebView) findViewById(R.id.webview_noti_mom))
 				.setWebViewClient(new WebViewClient() {
@@ -49,6 +48,7 @@ public class NotiMomQuestionActivity extends Activity {
 						super.onPageFinished(view, url);
 						if(url.equals(DefineConst.NETWORK_URL_QUESTION_END)){
 							LogUtil.e("change URL", url);
+							MyTagManager.getInstance(NotiMomQuestionActivity.this).sendEvent("N_Choose complete on push dialog_female");
 							startActivity(new Intent(NotiMomQuestionActivity.this, LogoLodingActivity.class));
 							ToastManager.getInstance().showToast(NotiMomQuestionActivity.this, "입력되었습니다. 답변을 확인해보세요.", 1000);
 							finish();
@@ -57,9 +57,14 @@ public class NotiMomQuestionActivity extends Activity {
 				});
 	}
 	@Override
+	protected void onStart() {
+		super.onStart();
+		MyTagManager.getInstance(this).send("appview", "N_Push dialog_female");
+	}
+	@Override
 	public void onBackPressed() {
 		// TODO Auto-generated method stub
 		super.onBackPressed();
-		MyTagManager.getInstance(NotiMomQuestionActivity.this).sendEvent("N_Back button on push dialog_mom");
+		MyTagManager.getInstance(NotiMomQuestionActivity.this).sendEvent("N_Back button on push dialog_female");
 	}
 }

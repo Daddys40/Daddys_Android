@@ -1,4 +1,7 @@
-package com.daddys40;
+package com.daddys40.re;
+
+import java.util.Calendar;
+import java.util.Random;
 
 import org.json.simple.JSONObject;
 
@@ -47,15 +50,15 @@ public class InvitedActivity extends MyActivity {
 	private boolean mTogglePrivacy = false;
 	
 	
-	private String mCurrentSetDay = "135";
+	private String mCurrentSetDay = "";
 	private EditText mEtAlarm;
 	private Button mBtnDay[] = new Button[7];
 	private ImageView mDayLine[] = new ImageView[7];
-	private boolean daySelect[] = {false,true,false,true,false,true,false};
+	private boolean daySelect[] = {false,false,false,false,false,false,false};
 	private final int  DAY_BACKGROUND[] = {R.drawable.day0,R.drawable.day1,R.drawable.day2,R.drawable.day3,R.drawable.day4,R.drawable.day5,R.drawable.day6};
 	private final int  DAY_BACKGROUND_SELECTED[] = {R.drawable.day0_select,R.drawable.day1_select,R.drawable.day2_select,R.drawable.day3_select,R.drawable.day4_select
 			,R.drawable.day5_select,R.drawable.day6_select};
-	private int daySelectNumber = 3;
+	private int daySelectNumber = 0;
 	
 	private OnClickListener dayClickListener = new OnClickListener() {
 		
@@ -91,14 +94,14 @@ public class InvitedActivity extends MyActivity {
 		if(daySelect[day_index])
 		{
 			daySelect[day_index] = false;
-			daySelectNumber++;
+			daySelectNumber--;
 			mBtnDay[day_index].setBackgroundResource(DAY_BACKGROUND[day_index]);
 			mDayLine[day_index].setVisibility(View.INVISIBLE);
 		}
 		else
 		{
 			daySelect[day_index] = true;
-			daySelectNumber--;
+			daySelectNumber++;
 			mBtnDay[day_index].setBackgroundResource(DAY_BACKGROUND_SELECTED[day_index]);
 			mDayLine[day_index].setVisibility(View.VISIBLE);
 		}
@@ -118,7 +121,11 @@ public class InvitedActivity extends MyActivity {
 		setBackPressMessage("메인 화면으로 돌아가시겠습니까?");
 		initView();
 		initEvent();
-		MyTagManager.getInstance(this).send("n_appview", "Invited Activity");
+	}
+	@Override
+	protected void onStart() {
+		super.onStart();
+		MyTagManager.getInstance(this).send("appview", "N_Invited Activity");
 	}
 
 	private void initView() {
@@ -151,6 +158,29 @@ public class InvitedActivity extends MyActivity {
 		mDayLine[4] = (ImageView) findViewById(R.id.dayline_4);
 		mDayLine[5] = (ImageView) findViewById(R.id.dayline_5);
 		mDayLine[6] = (ImageView) findViewById(R.id.dayline_6);
+		
+		Random r = new Random(Calendar.getInstance().getTimeInMillis());
+		if(r.nextBoolean()){
+			selectDayHelper(1);
+			selectDayHelper(3);
+			selectDayHelper(5);
+		}
+		else{
+			selectDayHelper(2);
+			selectDayHelper(4);
+			selectDayHelper(6);
+		}
+		switch (r.nextInt(3)) {
+		case 0:
+			mEtAlarm.setText("18:00");
+			break;
+		case 1:
+			mEtAlarm.setText("19:00");
+		case 2:
+			mEtAlarm.setText("20:00");
+		default:
+			break;
+		}
 	}
 
 	private void initEvent() {

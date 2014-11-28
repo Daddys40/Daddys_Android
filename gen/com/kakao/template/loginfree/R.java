@@ -14,11 +14,11 @@ public final class R {
 		public static final int main = 0x7f03002f;
 	}
 	public static final class string {
-		public static final int app_name = 0x7f050005;
-		public static final int com_kakao_alert_appKey = 0x7f050000;
-		public static final int com_kakao_alert_install_kakaotalk = 0x7f050001;
-		public static final int kakao_app_key = 0x7f050002;
-		public static final int kakao_scheme = 0x7f050003;
-		public static final int kakaolink_host = 0x7f050004;
+		public static final int app_name = 0x7f0a0012;
+		public static final int com_kakao_alert_appKey = 0x7f0a000d;
+		public static final int com_kakao_alert_install_kakaotalk = 0x7f0a000e;
+		public static final int kakao_app_key = 0x7f0a000f;
+		public static final int kakao_scheme = 0x7f0a0010;
+		public static final int kakaolink_host = 0x7f0a0011;
 	}
 }

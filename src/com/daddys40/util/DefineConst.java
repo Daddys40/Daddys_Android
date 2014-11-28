@@ -1,7 +1,7 @@
 package com.daddys40.util;
 
 public class DefineConst {
-	public final static String APP_VERSION = "1.0.0";
+	public final static String APP_VERSION = "1.0.1";
 	public final static boolean logOn = false;
 	
 	public final static String NETWORK_HTTP_USER_AGENT = "Frenddy Android/";
@@ -20,6 +20,8 @@ public class DefineConst {
 	
 	public final static String NETWORK_URL_TERMS = "http://frenddy-env-syszgmhzr2.elasticbeanstalk.com/about/terms";
 	public final static String NETWORK_URL_PRIVACY = "http://frenddy-env-syszgmhzr2.elasticbeanstalk.com/about/privacy";
+	
+	public final static String NETWORK_URL_FEEDBACK = "http://frenddy-env-syszgmhzr2.elasticbeanstalk.com/feedbacks";
 	
 	public final static String NETWORK_URL_QUESTION_START = "http://frenddy-env-syszgmhzr2.elasticbeanstalk.com/users/me/questions/new";
 	public final static String NETWORK_URL_QUESTION_END = "http://frenddy-env-syszgmhzr2.elasticbeanstalk.com/users/me/questions";

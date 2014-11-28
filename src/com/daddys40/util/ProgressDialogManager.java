@@ -38,6 +38,8 @@ public class ProgressDialogManager {
 
 		@Override
 		public boolean handleMessage(Message msg) {
+//			if(progressDialog != null)
+//				progressDialog.dismiss();
 			progressDialog = ProgressDialog.show(mContext, mTitle, mMsg);
 			return false;
 		}

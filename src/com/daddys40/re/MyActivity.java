@@ -1,4 +1,4 @@
-package com.daddys40;
+package com.daddys40.re;
 
 import android.app.Activity;
 import android.app.Dialog;

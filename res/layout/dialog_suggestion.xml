@@ -3,27 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#333366" >
-
-    <EditText
-        android:id="@+id/et_suggestion_mail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="5dp"
-        android:inputType="textEmailAddress"
-        android:hint="답변 받을 메일주소(선택)" />
-
-    <EditText
-        android:id="@+id/et_suggestion_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/et_suggestion_mail"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="5dp"
-        android:hint="제목" />
+    android:background="#202020" >
 
     <LinearLayout
         android:id="@+id/lay_suggestion_buttons"
@@ -55,7 +35,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/lay_suggestion_buttons"
-        android:layout_below="@id/et_suggestion_title"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="5dp"

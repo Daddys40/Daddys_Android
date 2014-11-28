@@ -1,4 +1,4 @@
-package com.daddys40;
+package com.daddys40.re;
 
 import org.json.simple.JSONObject;
 
@@ -18,11 +18,13 @@ import android.widget.TimePicker;
 import com.daddys40.alarm.EnrollAlarm;
 import com.daddys40.data.InstantUserData;
 import com.daddys40.network.DeleteRequest;
+import com.daddys40.network.FeedbackRequest;
 import com.daddys40.network.NetworkRequestDoneListener;
 import com.daddys40.network.RequestThread;
 import com.daddys40.network.SettingRequest;
 import com.daddys40.util.DialogMaker;
 import com.daddys40.util.LogUtil;
+import com.daddys40.util.MyTagManager;
 import com.daddys40.util.ProgressDialogManager;
 import com.daddys40.util.ToastManager;
 import com.daddys40.util.UserData;
@@ -41,6 +43,7 @@ public class SettingActivity extends Activity {
 	private TextView mTvDday;
 	private Button mBtnSave;
 	private Button mBtnDelete;
+	private Button mBtnSuggestion;
 
 	private boolean daySelect[] = { false, false, false, false, false, false, false };
 
@@ -62,6 +65,11 @@ public class SettingActivity extends Activity {
 		initView();
 		initEvent();
 	}
+	@Override
+	protected void onStart() {
+		super.onStart();
+		MyTagManager.getInstance(this).send("appview", "N_Setting Activity");
+	}
 
 	private void initView() {
 		// mEtAge = (EditText) findViewById(R.id.et_signup_age);
@@ -70,7 +78,7 @@ public class SettingActivity extends Activity {
 		// mEtHeight.setText(InstantUserData.getInstance().getHeight() + "");
 		// mEtWeight = (EditText) findViewById(R.id.et_signup_weight);
 		// mEtWeight.setText(InstantUserData.getInstance().getWeight() + "");
-
+		mBtnSuggestion = (Button) findViewById(R.id.btn_setting_suggestion);
 		mTvDday = (TextView) findViewById(R.id.tv_setting_dday);
 		mTvDday.setText("임신 " + UserData.getInstance().currentWeek() + "주차");
 
@@ -126,6 +134,47 @@ public class SettingActivity extends Activity {
 	}
 
 	private void initEvent() {
+		mBtnSuggestion.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				DialogMaker dm = new DialogMaker(SettingActivity.this, R.layout.dialog_suggestion,1,1);
+				final Dialog dlg = dm.getDialog();
+				((Button)dlg.findViewById(R.id.btn_suggestion_send)).setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						RequestThread rq = new FeedbackRequest(((EditText)dlg.findViewById(R.id.et_suggestion_content)).
+								getText().toString());
+						ToastManager.getInstance().init();
+						ProgressDialogManager.showProgressDialog(SettingActivity.this, "전송중", "의견을 전송중입니다.");
+						rq.setOnNetworkRequestDoneListener(new NetworkRequestDoneListener() {
+							
+							@Override
+							public void onFinish(String result, JSONObject jsonObject) {
+								ProgressDialogManager.dismiss();
+								ToastManager.getInstance().showToast(SettingActivity.this, "소중한 의견 감사합니다.", 1000);
+								dlg.dismiss();
+							}
+							
+							@Override
+							public void onExceptionError(Exception e) {
+								ProgressDialogManager.dismiss();
+								ToastManager.getInstance().showToast(SettingActivity.this, "네트워크 상태를 확인해주세요.", 1000);
+							}
+						});
+						rq.start();
+					}
+				});
+				((Button)dlg.findViewById(R.id.btn_suggestion_cancel)).setOnClickListener(new OnClickListener() {
+					
+					@Override
+					public void onClick(View v) {
+						dlg.dismiss();
+					}
+				});
+				dlg.show();
+			}
+		});
 		mBtnDelete.setOnClickListener(new OnClickListener() {
 
 			@Override

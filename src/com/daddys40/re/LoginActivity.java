@@ -1,4 +1,4 @@
-package com.daddys40;
+package com.daddys40.re;
 
 import java.util.Calendar;
 
@@ -17,6 +17,7 @@ import com.daddys40.data.InstantUserData;
 import com.daddys40.network.NetworkRequestDoneListener;
 import com.daddys40.network.SignInRequest;
 import com.daddys40.util.LogUtil;
+import com.daddys40.util.MyTagManager;
 import com.daddys40.util.ProgressDialogManager;
 import com.daddys40.util.ToastManager;
 import com.daddys40.util.UserData;
@@ -34,6 +35,11 @@ public class LoginActivity extends Activity {
 		setContentView(R.layout.activity_login);
 		initView();
 		initEvent();
+	}
+	@Override
+	protected void onStart() {
+		super.onStart();
+		MyTagManager.getInstance(this).send("appview", "N_Login Activity");
 	}
 
 	private void initView() {

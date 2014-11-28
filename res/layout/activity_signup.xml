@@ -475,9 +475,9 @@
                         android:layout_width="240dp"
                         android:layout_height="33dp"
                         android:background="@drawable/blank"
-                        android:text="19:00"
                         android:hint="알람시간"
                         android:inputType="datetime"
+                        android:text="19:00"
                         android:textColor="#ffffff"
                         android:textColorHint="#ffffff" />
                 </LinearLayout>
@@ -497,7 +497,7 @@
                 android:gravity="center_horizontal"
                 android:orientation="horizontal" >
 
-              <RelativeLayout
+                <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="3dp" >
@@ -528,7 +528,7 @@
                         android:id="@+id/btn_signup_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/day1_select"
+                        android:background="@drawable/day1"
                         android:padding="5dp" />
 
                     <ImageView
@@ -537,7 +537,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/btn_signup_1"
                         android:layout_marginTop="1dp"
-                        android:background="@drawable/day_line" />
+                        android:background="@drawable/day_line"
+                        android:visibility="invisible" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -571,7 +572,7 @@
                         android:id="@+id/btn_signup_3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/day3_select"
+                        android:background="@drawable/day3"
                         android:padding="5dp" />
 
                     <ImageView
@@ -580,7 +581,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/btn_signup_3"
                         android:layout_marginTop="1dp"
-                        android:background="@drawable/day_line" />
+                        android:background="@drawable/day_line"
+                        android:visibility="invisible" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -614,7 +616,7 @@
                         android:id="@+id/btn_signup_5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/day5_select"
+                        android:background="@drawable/day5"
                         android:padding="5dp" />
 
                     <ImageView
@@ -623,7 +625,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/btn_signup_5"
                         android:layout_marginTop="1dp"
-                        android:background="@drawable/day_line" />
+                        android:background="@drawable/day_line"
+                        android:visibility="invisible" />
                 </RelativeLayout>
 
                 <RelativeLayout

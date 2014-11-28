@@ -60,7 +60,7 @@
         android:gravity="center_horizontal" >
 
         <LinearLayout
-            android:id="@+id/invited_lay1"
+            android:id="@+id/invited_lay2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -85,17 +85,27 @@
         <ImageView
             android:layout_width="245dp"
             android:layout_height="3dp"
-            android:layout_below="@id/invited_lay1"
+            android:layout_below="@id/invited_lay2"
             android:layout_centerHorizontal="true"
             android:background="#ffffff" />
     </RelativeLayout>
+
+<!--     <Button -->
+<!--         android:id="@+id/btn_login_find_password" -->
+<!--         android:layout_width="wrap_content" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:layout_gravity="center_horizontal" -->
+<!--         android:layout_marginTop="20dp" -->
+<!--         android:background="@drawable/blank" -->
+<!--         android:text="비밀번호 찾기" -->
+<!--         android:textColor="#ffffff" /> -->
 
     <Button
         android:id="@+id/btn_login_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="120dp"
         android:background="@drawable/sel_btn_long_login" />
 
 </LinearLayout>
